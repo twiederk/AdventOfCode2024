@@ -77,6 +77,6 @@ class Day01Test {
 
         // assert
         assertThat(result).isEqualTo(11)
-
     }
+
 }

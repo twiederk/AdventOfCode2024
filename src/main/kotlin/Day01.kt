@@ -1,4 +1,5 @@
 import java.nio.file.Path
+import kotlin.io.path.Path
 import kotlin.io.path.name
 import kotlin.math.abs
 
@@ -36,4 +37,11 @@ class Day01 {
         return sumUpDistance(sorted.first, sorted.second)
     }
 
+}
+
+fun main() {
+    val day1 = Day01()
+    val listsOfIds = day1.loadData(Path("src", "main", "resources", "Day01_InputData.txt"))
+    val part1 = day1.part1(listsOfIds.first, listsOfIds.second)
+    println("Day01 part1:  $part1")
 }
