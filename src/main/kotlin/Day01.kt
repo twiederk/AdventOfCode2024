@@ -37,6 +37,22 @@ class Day01 {
         return sumUpDistance(sorted.first, sorted.second)
     }
 
+    fun countNumberInList(list: List<Int>, number: Int): Int {
+        return list.count { it == number }
+    }
+
+    fun multiplyNumberWithCountOfNumberInList(list: List<Int>, number: Int): Int {
+        return countNumberInList(list, number) * number
+    }
+
+    fun part2(first: List<Int>, second: List<Int>): Int {
+        var sum = 0
+        for (i in first.indices) {
+            sum += multiplyNumberWithCountOfNumberInList(second, first[i])
+        }
+        return sum
+    }
+
 }
 
 fun main() {
@@ -44,4 +60,7 @@ fun main() {
     val listsOfIds = day1.loadData(Path("src", "main", "resources", "Day01_InputData.txt"))
     val part1 = day1.part1(listsOfIds.first, listsOfIds.second)
     println("Day01 part1:  $part1")
+
+    val part2 = day1.part2(listsOfIds.first, listsOfIds.second)
+    println("Day01 part2:  $part2")
 }

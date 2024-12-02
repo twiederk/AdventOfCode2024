@@ -79,4 +79,53 @@ class Day01Test {
         assertThat(result).isEqualTo(11)
     }
 
+    @Test
+    fun should_return_count_of_number_in_list() {
+        // arrange
+        val second = listOf(4, 3, 5, 3, 9, 3)
+
+        // act
+        val result = Day01().countNumberInList(second, 3)
+
+        // assert
+        assertThat(result).isEqualTo(3)
+    }
+
+    @Test
+    fun should_multiply_number_with_count_of_number_in_list_3() {
+        // arrange
+        val second = listOf(4, 3, 5, 3, 9, 3)
+
+        // act
+        val result = Day01().multiplyNumberWithCountOfNumberInList(second, 3)
+
+        // assert
+        assertThat(result).isEqualTo(9)
+    }
+
+    @Test
+    fun should_multiply_number_with_count_of_number_in_list_1() {
+        // arrange
+        val second = listOf(4, 3, 5, 3, 9, 3)
+
+        // act
+        val result = Day01().multiplyNumberWithCountOfNumberInList(second, 1)
+
+        // assert
+        assertThat(result).isEqualTo(0)
+    }
+
+    @Test
+    fun should_solve_part2() {
+        // arrange
+        val first = listOf(3, 4, 2, 1, 3, 3)
+        val second = listOf(4, 3, 5, 3, 9, 3)
+
+        // act
+        val result = Day01().part2(first, second)
+
+        // assert
+        assertThat(result).isEqualTo(31)
+    }
+
 }
