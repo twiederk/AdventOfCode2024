@@ -13,8 +13,13 @@ class Day03Test {
         // act
         val matches = regex.findAll(input)
         for (match in matches) {
-            val (firstDigit, secondDigit) = match.destructured
-            println("Found match: mul($firstDigit, $secondDigit)")
+            val firstDigit = match.value.substringAfter("mul(").substringBefore(",")
+            println(firstDigit)
+            val secondDigit = match.value.substringAfter(",").substringBefore(")")
+            println(secondDigit)
+            println("match.value = ${match.value}")
+//            val (firstDigit, secondDigit) = match.destructured
+//            println("Found match: mul($firstDigit, $secondDigit)")
         }
 
         // assert
