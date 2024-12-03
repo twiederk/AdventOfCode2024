@@ -29,19 +29,41 @@ class Day02 {
         return reports.count { Day02().validReport(it) }
     }
 
-    fun validDampenerIncrease(diffs: List<Int>): Boolean {
+    fun validDampenerIncrease(diffs: List<Int>, report: List<Int>): Boolean {
         val filteredDiffs = diffs.filter { it in 1..3 }
-        return filteredDiffs.size == diffs.size || filteredDiffs.size == diffs.size - 1
+        val sizeDiff = diffs.size - filteredDiffs.size
+        when (sizeDiff) {
+            0 -> return true
+            1 -> {
+                val index = diffs.indexOfFirst { it !in 1..3 }
+                val dampedReport = report.toMutableList().apply { removeAt(index) }
+                val dampedDiff = diffs(dampedReport)
+                return validIncrease(dampedDiff)
+            }
+
+            else -> return false
+        }
     }
 
-    fun validDampenerDecrease(diffs: List<Int>): Boolean {
+    fun validDampenerDecrease(diffs: List<Int>, report: List<Int>): Boolean {
         val filteredDiffs = diffs.filter { it in -3..-1 }
-        return filteredDiffs.size == diffs.size || filteredDiffs.size == diffs.size - 1
+        val sizeDiff = diffs.size - filteredDiffs.size
+        when (sizeDiff) {
+            0 -> return true
+            1 -> {
+                val index = diffs.indexOfFirst { it !in -3..-1 }
+                val dampedReport = report.toMutableList().apply { removeAt(index) }
+                val dampedDiff = diffs(dampedReport)
+                return validDecrease(dampedDiff)
+            }
+
+            else -> return false
+        }
     }
 
     fun validDampenerReport(report: List<Int>): Boolean {
         val diffs = diffs(report)
-        return validDampenerDecrease(diffs) || validDampenerIncrease(diffs)
+        return validDampenerDecrease(diffs, report) || validDampenerIncrease(diffs, report)
     }
 
     fun part2(reports: List<List<Int>>): Int {

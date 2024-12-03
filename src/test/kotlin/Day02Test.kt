@@ -99,10 +99,11 @@ class Day02Test {
     @Test
     fun should_return_true_when_skipping_one_element_by_increasing() {
         // arrange
+        val report = listOf(1, 3, 2, 4, 5)
         val diffs = listOf(2, -1, 2, 1)
 
         // act
-        var result = Day02().validDampenerIncrease(diffs)
+        var result = Day02().validDampenerIncrease(diffs, report)
 
         // assert
         assertThat(result).isTrue
@@ -111,13 +112,14 @@ class Day02Test {
     @Test
     fun should_return_true_when_skipping_one_element_by_decreasing() {
         // arrange
-        val diffs = Day02().diffs(listOf(8, 6, 4, 4, 1))
+        val report = listOf(8, 6, 4, 4, 1)
+        val diffs = Day02().diffs(report)
 
         // act
-        var result = Day02().validDampenerDecrease(diffs)
+        var result = Day02().validDampenerDecrease(diffs, report)
 
         // assert
-        assertThat(result).isTrue
+        assertThat(result).isTrue()
     }
 
     @Test
@@ -147,16 +149,35 @@ class Day02Test {
     @Test
     fun should_return_false_when_diff_is_dampener_decrease_invalid() {
         // arrange
-        val diffs = Day02().diffs(listOf(9, 7, 6, 2, 1))
-        println(diffs)
+        val report = listOf(9, 7, 6, 2, 1)
+        val diffs = Day02().diffs(report)
 
         // act
-        val result = Day02().validDampenerDecrease(diffs)
+        val result = Day02().validDampenerDecrease(diffs, report)
 
         // assert
         assertThat(result).isFalse()
-
     }
+
+    @Test
+    fun should_solve_part2() {
+        // arrange
+        val input = listOf(
+            listOf(7, 6, 4, 2, 1),
+            listOf(1, 2, 7, 8, 9),
+            listOf(9, 7, 6, 2, 1),
+            listOf(1, 3, 2, 4, 5),
+            listOf(8, 6, 4, 4, 1),
+            listOf(1, 3, 6, 7, 9),
+        )
+
+        // act
+        val result = Day02().part2(input)
+
+        // assert
+        assertThat(result).isEqualTo(4)
+    }
+
 }
 
 
