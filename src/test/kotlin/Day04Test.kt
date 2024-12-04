@@ -35,4 +35,7 @@ class Day04Test {
         assertThat(result).isEqualTo(4)
     }
 
+    // test getLetter(x, y)
+    // test getNeighbours(x, y)
+
 }
