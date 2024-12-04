@@ -75,10 +75,65 @@ class Day04 {
         return count
     }
 
+    fun cross(point: Point2D, crossPuzzle: List<String>): Boolean {
+        // M.S
+        // .A.
+        // M.S
+        if (letter(point + Point2D.NORTH_WEST, crossPuzzle) == 'M'
+            && letter(point + Point2D.NORTH_EAST, crossPuzzle) == 'S'
+            && letter(point + Point2D.SOUTH_WEST, crossPuzzle) == 'M'
+            && letter(point + Point2D.SOUTH_EAST, crossPuzzle) == 'S'
+        ) {
+            return true
+        }
+        // S.M
+        // .A.
+        // S.M
+        if (letter(point + Point2D.NORTH_WEST, crossPuzzle) == 'S'
+            && letter(point + Point2D.NORTH_EAST, crossPuzzle) == 'M'
+            && letter(point + Point2D.SOUTH_WEST, crossPuzzle) == 'S'
+            && letter(point + Point2D.SOUTH_EAST, crossPuzzle) == 'M'
+        ) {
+            return true
+        }
+        // S.S
+        // .A.
+        // M.M
+        if (letter(point + Point2D.NORTH_WEST, crossPuzzle) == 'S'
+            && letter(point + Point2D.NORTH_EAST, crossPuzzle) == 'S'
+            && letter(point + Point2D.SOUTH_WEST, crossPuzzle) == 'M'
+            && letter(point + Point2D.SOUTH_EAST, crossPuzzle) == 'M'
+        ) {
+            return true
+        }
+        // M.M
+        // .A.
+        // S.S
+        if (letter(point + Point2D.NORTH_WEST, crossPuzzle) == 'M'
+            && letter(point + Point2D.NORTH_EAST, crossPuzzle) == 'M'
+            && letter(point + Point2D.SOUTH_WEST, crossPuzzle) == 'S'
+            && letter(point + Point2D.SOUTH_EAST, crossPuzzle) == 'S'
+        ) {
+            return true
+        }
+        return false
+    }
+
+    fun solvePart2(crossPuzzle: List<String>): Int {
+        var count = 0
+        for (point in startingPoints(crossPuzzle, 'A')) {
+            if (cross(point, crossPuzzle)) {
+                count++
+            }
+        }
+        return count
+    }
+
 }
 
 fun main() {
     val day04 = Day04()
     val wordPuzzle = Day03().loadData(Path("src", "main", "resources", "Day04_InputData.txt"))
     println("Part 1: ${day04.solvePart1(wordPuzzle)}")
+    println("Part 2: ${day04.solvePart2(wordPuzzle)}")
 }

@@ -12,6 +12,19 @@ class Day04Test {
         ".X....",
     )
 
+    private val crossPuzzle = listOf(
+        ".M.S......",
+        "..A..MSMS.",
+        ".M.S.MAA..",
+        "..A.ASMSM.",
+        ".M.S.M....",
+        "..........",
+        "S.S.S.S.S.",
+        ".A.A.A.A..",
+        "M.M.M.M.M.",
+        "..........",
+    )
+
     @Test
     fun should_load_data() {
 
@@ -128,6 +141,26 @@ class Day04Test {
 
         // assert
         assertThat(result).isEqualTo(18)
+    }
+
+    @Test
+    fun should_find_cross() {
+
+        // act
+        val result = Day04().cross(Point2D(2, 1), crossPuzzle)
+
+        // assert
+        assertThat(result).isTrue()
+    }
+
+    @Test
+    fun should_solve_cross_puzzle() {
+
+        // act
+        val result = Day04().solvePart2(crossPuzzle)
+
+        // assert
+        assertThat(result).isEqualTo(9)
     }
 
 }
