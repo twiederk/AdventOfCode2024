@@ -17,4 +17,22 @@ class Day04Test {
         assertThat(wordPuzzle).hasSize(10)
     }
 
+    @Test
+    fun should_perform_bfs() {
+        // arrange
+        val wordPuzzle = listOf(
+            "..X...",
+            ".SAMX.",
+            ".A..A.",
+            "XMAS.S",
+            ".X....",
+        )
+
+        // act
+        val result = Day04().bfs(wordPuzzle)
+
+        // assert
+        assertThat(result).isEqualTo(4)
+    }
+
 }
