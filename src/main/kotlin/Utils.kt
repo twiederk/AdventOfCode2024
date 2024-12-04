@@ -56,9 +56,13 @@ data class Point2D(
 ) {
 
     companion object {
+        val NORTH_WEST = Point2D(-1, -1)
         val NORTH = Point2D(0, -1)
+        val NORTH_EAST = Point2D(1, -1)
         val EAST = Point2D(1, 0)
+        val SOUTH_EAST = Point2D(1, 1)
         val SOUTH = Point2D(0, 1)
+        val SOUTH_WEST = Point2D(-1, 1)
         val WEST = Point2D(-1, 0)
     }
 
@@ -88,6 +92,20 @@ data class Point2D(
         return neighbors
     }
 
+    fun allNeighbors(grid: List<String>): List<Point2D> {
+        val neighbors = cardinalNeighbors(grid).toMutableList()
+        // north_east
+        if (y - 1 >= 0 && x + 1 < grid[0].length) neighbors.add(this + NORTH_EAST)
+        // south_east
+        if (y + 1 < grid.size && x + 1 < grid[0].length) neighbors.add(this + SOUTH_EAST)
+        // north_west
+        if (y - 1 >= 0 && x - 1 >= 0) neighbors.add(this + NORTH_WEST)
+        // south_east
+        if (y + 1 < grid.size && x + 1 < grid[0].length) neighbors.add(this + SOUTH_WEST)
+        return neighbors
+    }
+
+
     operator fun minus(other: Point2D): Point2D =
         Point2D(x - other.x, y - other.y)
 
@@ -96,6 +114,7 @@ data class Point2D(
 
     fun manhattenDistance(other: Point2D): Int =
         abs(x - other.x) + abs(y - other.y)
+
 }
 
 data class LongPoint(

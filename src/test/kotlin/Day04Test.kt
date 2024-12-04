@@ -35,7 +35,43 @@ class Day04Test {
         assertThat(result).isEqualTo(4)
     }
 
-    // test getLetter(x, y)
+    @Test
+    fun should_return_letter_at_position() {
+        // arrange
+        val wordPuzzle = listOf(
+            "..X...",
+            ".SAMX.",
+            ".A..A.",
+            "XMAS.S",
+            ".X....",
+        )
+
+        // act
+        val result = Day04().letter(Point2D(2, 0), wordPuzzle)
+
+        // assert
+        assertThat(result).isEqualTo('X')
+    }
+
+    @Test
+    fun should_return_list_of_neighbors_at_2_0() {
+        // arrange
+        val wordPuzzle = listOf(
+            "..X...",
+            ".SAMX.",
+            ".A..A.",
+            "XMAS.S",
+            ".X....",
+        )
+
+        // act
+        val neighbors = Day04().neighbours(Point2D(2, 0), wordPuzzle)
+
+        // assert
+        assertThat(neighbors).containsExactly(Point2D(3, 1))
+    }
+
     // test getNeighbours(x, y)
+    // test get all starting points
 
 }

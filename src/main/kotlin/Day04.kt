@@ -3,10 +3,16 @@ import kotlin.io.path.name
 
 class Day04 {
 
+    private val letterMap = mapOf(
+        'X' to 'M',
+        'M' to 'A',
+        'A' to 'S'
+    )
+
+
     fun loadData(path: Path): List<String> {
         return Resources.resourceAsListOfString(path.name)
     }
-
 
     fun bfs(wordPuzzle: List<String>): Int {
         /*
@@ -31,5 +37,15 @@ class Day04 {
          */
 
         return 0
+    }
+
+    fun letter(point: Point2D, wordPuzzle: List<String>): Char {
+        return wordPuzzle[point.y][point.x]
+    }
+
+    fun neighbours(point: Point2D, wordPuzzle: List<String>): List<Point2D> {
+        val allNeighbors = point.allNeighbors(wordPuzzle)
+        val nextLetter = letterMap[letter(point, wordPuzzle)]
+        return allNeighbors.filter { letter(it, wordPuzzle) == nextLetter }
     }
 }
