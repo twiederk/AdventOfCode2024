@@ -1,4 +1,4 @@
-# Advent Of Code 2023
+# Advent Of Code 2024
 
 ## Overview of the puzzles
 
