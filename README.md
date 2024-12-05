@@ -2,13 +2,13 @@
 
 ## Overview of the puzzles
 
-| Day | Title                | Part 1 | Part 2 | Notes                             |
-|----:|----------------------|--------|--------|-----------------------------------|
-| [1] | [Historian Hysteria] | solved | solved | Sorting two lists                 |
-| [2] | [Red-Nosed Reports]  | solved | OPEN   | Converting a list to another list |
-| [3] | [Mull It Over]       | solved | OPEN   | Parsing an input string           |
-| [4] | [Ceres Search]       | solved | solved | Word puzzle (nice one)            |
-| [5] | [Print Queue]        | solved | solved | Walking a graph                   |
+| Day | Title                | Part 1  | Part 2  | Notes                             |
+|----:|----------------------|:-------:|:-------:|-----------------------------------|
+| [1] | [Historian Hysteria] | &#9733; | &#9733; | Sorting two lists                 |
+| [2] | [Red-Nosed Reports]  | &#9733; |         | Converting a list to another list |
+| [3] | [Mull It Over]       | &#9733; |         | Parsing an input string           |
+| [4] | [Ceres Search]       | &#9733; | &#9733; | Word puzzle (nice one)            |
+| [5] | [Print Queue]        | &#9733; | &#9733; | Walking a graph                   |
 
 ## Resources
 
