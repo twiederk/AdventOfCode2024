@@ -31,4 +31,16 @@ class Day05 {
         return rules
     }
 
+    fun validateUpdate(update: List<Int>, rules: Map<Int, List<Int>>): Boolean {
+        var currentUpdate = update
+        while (currentUpdate.isNotEmpty()) {
+            val page = currentUpdate[0]
+            currentUpdate = currentUpdate.drop(1)
+            if (!validatePageOrder(page, rules, currentUpdate)) {
+                return false
+            }
+        }
+        return true
+    }
+
 }
