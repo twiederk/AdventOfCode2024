@@ -9,7 +9,7 @@
 | [3] | [Mull It Over]       | &#9733; |         | Parsing an input string           |
 | [4] | [Ceres Search]       | &#9733; | &#9733; | Word puzzle (nice one)            |
 | [5] | [Print Queue]        | &#9733; | &#9733; | Walking a graph                   |
-| [6] | [Guard Gallivant]    | &#9733; |         | Moving through a maze             |
+| [6] | [Guard Gallivant]    | &#9733; | &#9733; | Moving through a maze             |
 
 ## Resources
 
