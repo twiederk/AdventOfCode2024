@@ -6,6 +6,7 @@ import kotlin.io.path.name
 class Day06 {
 
     private val visited = mutableSetOf<Point2D>()
+    private val visitedWithDirection = mutableSetOf<Pair<Point2D, Point2D>>()
 
     private val turns = mapOf(
         Point2D.NORTH to Point2D.EAST,
@@ -77,6 +78,44 @@ class Day06 {
         return visited
     }
 
+    private fun patrolWithDirection(grid: List<String>, startPoint: Point2D): Boolean {
+        var position = startPoint
+        var direction = Point2D.NORTH
+        storePositionWithDirection(position, direction)
+        while (position != END_POINT) {
+            val (newPosition, newDirection) = step(position, direction, grid)
+            position = newPosition
+            direction = newDirection
+            if (position != END_POINT) {
+                try {
+                    storePositionWithDirection(position, direction)
+                } catch (e: Exception) {
+                    visitedWithDirection.clear()
+                    return true
+                }
+            }
+        }
+        visitedWithDirection.clear()
+        return false
+    }
+
+    fun solvePart2(grid: List<String>): Int {
+        var loops = 0
+        val startPoint = startPoint(grid)
+        for (y in grid.indices) {
+            for (x in grid[y].indices) {
+                if (grid[y][x] != '#') {
+                    val newGrid = addObstacle(grid, Point2D(x, y))
+                    if (patrolWithDirection(newGrid, startPoint)) {
+                        loops++
+                    }
+                }
+            }
+        }
+        return loops
+    }
+
+
     fun countX(grid: List<String>): Int {
         return grid.sumOf { it.count { c -> c == 'X' } }
     }
@@ -84,6 +123,23 @@ class Day06 {
     fun solvePart1(grid: List<String>): Int {
         return patrol(grid).size
     }
+
+    fun storePositionWithDirection(position: Point2D, direction: Point2D): Set<Pair<Point2D, Point2D>> {
+        if (visitedWithDirection.contains(Pair(position, direction))) {
+            throw Exception("Loop detected")
+        }
+        visitedWithDirection.add(Pair(position, direction))
+        return visitedWithDirection
+    }
+
+    fun addObstacle(grid: List<String>, position: Point2D): List<String> {
+        val row = grid[position.y].toCharArray()
+        row[position.x] = '#'
+        val newGrid = grid.toMutableList()
+        newGrid[position.y] = String(row)
+        return newGrid
+    }
+
 
     companion object {
         val END_POINT = Point2D(-1, -1)

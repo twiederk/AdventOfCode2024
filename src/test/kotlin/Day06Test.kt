@@ -185,4 +185,45 @@ class Day06Test {
         assertThat(result).isEqualTo(41)
     }
 
+    @Test
+    fun should_store_with_direction() {
+
+        // act
+        val result = Day06().storePositionWithDirection(Point2D(1, 1), Point2D.NORTH)
+
+        // assert
+        assertThat(result).containsExactly(Pair(Point2D(1, 1), Point2D.NORTH))
+    }
+
+    @Test
+    fun should_solve_part2() {
+
+        // act
+        val result = Day06().solvePart2(grid)
+
+        // assert
+        assertThat(result).isEqualTo(6)
+
+    }
+
+    @Test
+    fun should_add_obstacle_to_grid() {
+        // arrange
+        val grid = listOf(
+            "...",
+            "...",
+            "...",
+        )
+
+        // act
+        val result = Day06().addObstacle(grid, Point2D(1, 1))
+
+        // assert
+        assertThat(result).containsExactly(
+            "...",
+            ".#.",
+            "...",
+        )
+
+    }
 }
