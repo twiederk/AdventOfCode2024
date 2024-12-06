@@ -46,12 +46,45 @@ class Day06 {
         return turns[direction] ?: throw IllegalArgumentException("Invalid direction")
     }
 
-    fun step(position: Point2D, direction: Point2D, grid: List<String>): Pair<Point2D,Point2D> {
+    fun step(position: Point2D, direction: Point2D, grid: List<String>): Pair<Point2D, Point2D> {
         return if (isBlocked(position + direction, grid)) {
             Pair(position, turn(direction))
         } else {
             Pair(move(position, direction, grid), direction)
         }
+    }
+
+    fun print(grid: MutableList<String>, position: Point2D, sign: Char): MutableList<String> {
+        val row = grid[position.y].toCharArray()
+        row[position.x] = sign
+        grid[position.y] = String(row)
+        return grid
+    }
+
+    fun patrol(grid: List<String>): List<String> {
+        val startPoint = startPoint(grid)
+        var patrolMap = grid.toMutableList()
+        patrolMap = print(patrolMap, startPoint, 'X')
+        var position = startPoint
+        var direction = Point2D.NORTH
+        while (position != END_POINT) {
+            val (newPosition, newDirection) = step(position, direction, grid)
+            position = newPosition
+            direction = newDirection
+            if (position != END_POINT) {
+                patrolMap = print(patrolMap, position, 'X')
+            }
+        }
+        return patrolMap
+    }
+
+    fun countX(grid: List<String>): Int {
+        return grid.sumOf { it.count { c -> c == 'X' } }
+    }
+
+    fun solvePart1(grid: List<String>): Int {
+        val patrolMap = patrol(grid)
+        return countX(patrolMap)
     }
 
     companion object {

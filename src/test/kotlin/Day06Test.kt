@@ -120,4 +120,77 @@ class Day06Test {
         assertThat(position).isEqualTo(Day06.END_POINT)
         assertThat(direction).isEqualTo(Point2D.NORTH)
     }
+
+    @Test
+    fun should_print_X_to_grid() {
+        // arrange
+        val emptyGrid = mutableListOf(
+            "...",
+            "...",
+            "...",
+        )
+
+        // act
+        val result = Day06().print(emptyGrid, Point2D(1, 1), 'X')
+
+        // assert
+        assertThat(result).containsExactly(
+            "...",
+            ".X.",
+            "...",
+        )
+    }
+
+    @Test
+    fun should_print_path_on_empty_grid() {
+        // arrange
+        val grid = listOf(
+            "...",
+            "...",
+            ".^.",
+        )
+
+        // act
+        val result = Day06().patrol(grid)
+
+        // assert
+        assertThat(result).containsExactly(
+            ".X.",
+            ".X.",
+            ".X.",
+        )
+    }
+
+    @Test
+    fun should_count_all_X_on_grid() {
+        val patrolMap = listOf(
+            "....#.....",
+            "....XXXXX#",
+            "....X...X.",
+            "..#.X...X.",
+            "..XXXXX#X.",
+            "..X.X.X.X.",
+            ".#XXXXXXX.",
+            ".XXXXXXX#.",
+            "#XXXXXXX..",
+            "......#X..",
+        )
+
+        // act
+        val result = Day06().countX(patrolMap)
+
+        // assert
+        assertThat(result).isEqualTo(41)
+    }
+
+    @Test
+    fun should_solve_part1() {
+
+        // act
+        val result = Day06().solvePart1(grid)
+
+        // assert
+        assertThat(result).isEqualTo(41)
+    }
+
 }
