@@ -1,4 +1,5 @@
 import java.nio.file.Path
+import kotlin.io.path.Path
 import kotlin.io.path.name
 
 
@@ -91,4 +92,10 @@ class Day06 {
         val END_POINT = Point2D(-1, -1)
     }
 
+}
+
+fun main() {
+    val day06 = Day06()
+    val grid = day06.loadData(Path("src", "main", "resources", "Day06_InputData.txt"))
+    println("Part 1: ${day06.solvePart1(grid)}")
 }
