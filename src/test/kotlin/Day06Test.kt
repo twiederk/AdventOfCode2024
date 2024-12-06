@@ -89,4 +89,35 @@ class Day06Test {
         assertThat(result).isEqualTo(Point2D.EAST)
     }
 
+    @Test
+    fun should_move_to_next_position_when_not_blocked() {
+
+        // act
+        val (position, direction) = Day06().step(Point2D(4, 6), Point2D.NORTH, grid)
+
+        // assert
+        assertThat(position).isEqualTo(Point2D(4, 5))
+        assertThat(direction).isEqualTo(Point2D.NORTH)
+    }
+
+    @Test
+    fun should_turn_to_next_position_when_not_blocked() {
+
+        // act
+        val (position, direction) = Day06().step(Point2D(4, 1), Point2D.NORTH, grid)
+
+        // assert
+        assertThat(position).isEqualTo(Point2D(4, 1))
+        assertThat(direction).isEqualTo(Point2D.EAST)
+    }
+
+    @Test
+    fun should_END_POINT_when_leaving_grid() {
+        // act
+        val (position, direction) = Day06().step(Point2D(0, 0), Point2D.NORTH, grid)
+
+        // assert
+        assertThat(position).isEqualTo(Day06.END_POINT)
+        assertThat(direction).isEqualTo(Point2D.NORTH)
+    }
 }

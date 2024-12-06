@@ -28,6 +28,9 @@ class Day06 {
     }
 
     fun isBlocked(position: Point2D, grid: List<String>): Boolean {
+        if (position.x < 0 || position.y < 0 || position.y >= grid.size || position.x >= grid[position.y].length) {
+            return false
+        }
         return grid[position.y][position.x] == '#'
     }
 
@@ -41,6 +44,14 @@ class Day06 {
 
     fun turn(direction: Point2D): Point2D {
         return turns[direction] ?: throw IllegalArgumentException("Invalid direction")
+    }
+
+    fun step(position: Point2D, direction: Point2D, grid: List<String>): Pair<Point2D,Point2D> {
+        return if (isBlocked(position + direction, grid)) {
+            Pair(position, turn(direction))
+        } else {
+            Pair(move(position, direction, grid), direction)
+        }
     }
 
     companion object {
