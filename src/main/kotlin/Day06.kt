@@ -5,6 +5,7 @@ import kotlin.io.path.name
 
 class Day06 {
 
+    private val visited = mutableSetOf<Point2D>()
 
     private val turns = mapOf(
         Point2D.NORTH to Point2D.EAST,
@@ -55,17 +56,14 @@ class Day06 {
         }
     }
 
-    fun print(grid: MutableList<String>, position: Point2D, sign: Char): MutableList<String> {
-        val row = grid[position.y].toCharArray()
-        row[position.x] = sign
-        grid[position.y] = String(row)
-        return grid
+    fun storePosition(position: Point2D): Set<Point2D> {
+        visited.add(position)
+        return visited
     }
 
-    fun patrol(grid: List<String>): List<String> {
+    fun patrol(grid: List<String>): Set<Point2D> {
         val startPoint = startPoint(grid)
-        var patrolMap = grid.toMutableList()
-        patrolMap = print(patrolMap, startPoint, 'X')
+        storePosition(startPoint)
         var position = startPoint
         var direction = Point2D.NORTH
         while (position != END_POINT) {
@@ -73,10 +71,10 @@ class Day06 {
             position = newPosition
             direction = newDirection
             if (position != END_POINT) {
-                patrolMap = print(patrolMap, position, 'X')
+                storePosition(position)
             }
         }
-        return patrolMap
+        return visited
     }
 
     fun countX(grid: List<String>): Int {
@@ -84,8 +82,7 @@ class Day06 {
     }
 
     fun solvePart1(grid: List<String>): Int {
-        val patrolMap = patrol(grid)
-        return countX(patrolMap)
+        return patrol(grid).size
     }
 
     companion object {

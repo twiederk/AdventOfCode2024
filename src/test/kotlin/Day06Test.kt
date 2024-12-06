@@ -122,27 +122,19 @@ class Day06Test {
     }
 
     @Test
-    fun should_print_X_to_grid() {
+    fun should_storePosition_X_to_grid() {
         // arrange
-        val emptyGrid = mutableListOf(
-            "...",
-            "...",
-            "...",
-        )
+        val day06 = Day06()
 
         // act
-        val result = Day06().print(emptyGrid, Point2D(1, 1), 'X')
+        val result = day06.storePosition(Point2D(1, 1))
 
         // assert
-        assertThat(result).containsExactly(
-            "...",
-            ".X.",
-            "...",
-        )
+        assertThat(result).containsExactly(Point2D(1, 1))
     }
 
     @Test
-    fun should_print_path_on_empty_grid() {
+    fun should_storePosition_path_on_empty_grid() {
         // arrange
         val grid = listOf(
             "...",
@@ -154,10 +146,10 @@ class Day06Test {
         val result = Day06().patrol(grid)
 
         // assert
-        assertThat(result).containsExactly(
-            ".X.",
-            ".X.",
-            ".X.",
+        assertThat(result).contains(
+            Point2D(1,0),
+            Point2D(1,1),
+            Point2D(1,2),
         )
     }
 
