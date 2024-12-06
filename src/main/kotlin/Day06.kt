@@ -151,4 +151,5 @@ fun main() {
     val day06 = Day06()
     val grid = day06.loadData(Path("src", "main", "resources", "Day06_InputData.txt"))
     println("Part 1: ${day06.solvePart1(grid)}")
+    println("Part 2: ${day06.solvePart2(grid)}")
 }
