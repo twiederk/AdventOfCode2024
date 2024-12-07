@@ -195,4 +195,54 @@ class Day07Test {
         assertThat(result).isTrue()
     }
 
+    @Test
+    fun should_convert_0_to_permutation() {
+
+        // act
+        val permutation = Day07().convertIntToPermutation(0)
+
+        // assert
+        assertThat(permutation).isEqualTo(listOf("+"))
+    }
+
+    @Test
+    fun should_convert_1_to_permutation() {
+
+        // act
+        val permutation = Day07().convertIntToPermutation(1)
+
+        // assert
+        assertThat(permutation).isEqualTo(listOf("*"))
+    }
+
+    @Test
+    fun should_convert_2_to_permutation() {
+
+        // act
+        val permutation = Day07().convertIntToPermutation(2)
+
+        // assert
+        assertThat(permutation).isEqualTo(listOf("*", "+"))
+    }
+
+    @Test
+    fun should_convert_3_to_permutation() {
+
+        // act
+        val permutation = Day07().convertIntToPermutation(3)
+
+        // assert
+        assertThat(permutation).isEqualTo(listOf("*", "*"))
+    }
+
+    @Test
+    fun should_convert_16_to_permutation() {
+
+        // act
+        val permutation = Day07().convertIntToPermutation(16)
+
+        // assert
+        assertThat(permutation).isEqualTo(listOf("*", "+", "+", "+", "+"))
+    }
+
 }

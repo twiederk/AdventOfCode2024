@@ -52,6 +52,20 @@ class Day07 {
     fun solvePart1(equations: List<Equation>): Long {
         return equations.filter { equation -> checkEquationWithAllPermutations(equation) }.sumOf { it.result }
     }
+
+    fun convertIntToPermutation(number: Int): List<String> {
+        val permutations = mutableListOf<String>()
+        val binaryRepresentation = number.toString(2)
+        for (digit in binaryRepresentation) {
+            if (digit == '0') {
+                permutations.add("+")
+            } else {
+                permutations.add("*")
+            }
+        }
+        return permutations
+    }
+
 }
 
 data class Equation(
