@@ -101,7 +101,7 @@ class Day07Test {
         val permutations = Day07().generateAllPermutations(2)
 
         // assert
-        assertThat(permutations).hasSize(2)
+        assertThat(permutations).hasSize(4)
     }
 
     @Test
@@ -111,7 +111,7 @@ class Day07Test {
         val permutations = Day07().generateAllPermutations(3)
 
         // assert
-        assertThat(permutations).hasSize(4)
+        assertThat(permutations).hasSize(8)
     }
 
     @Test
@@ -121,7 +121,7 @@ class Day07Test {
         val permutations = Day07().generateAllPermutations(4)
 
         // assert
-        assertThat(permutations).hasSize(8)
+        assertThat(permutations).hasSize(16)
     }
 
     @Test

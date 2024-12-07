@@ -27,154 +27,17 @@ class Day07 {
         return total == equation.result
     }
 
-    fun generateAllPermutations(numberOfOperants: Int): List<List<String>> {
-        when (numberOfOperants) {
-            2 -> return listOf(
-                listOf("+"),
-                listOf("*")
-            )
-
-            3 -> return listOf(
-                listOf("+", "+"),
-                listOf("+", "*"),
-                listOf("*", "+"),
-                listOf("*", "*")
-            )
-
-            4 -> return listOf(
-                listOf("+", "+", "+"),
-                listOf("+", "+", "*"),
-                listOf("+", "*", "+"),
-                listOf("+", "*", "*"),
-                listOf("*", "+", "+"),
-                listOf("*", "+", "*"),
-                listOf("*", "*", "+"),
-                listOf("*", "*", "*")
-            )
-
-            5 -> return listOf(
-                listOf("+", "+", "+", "+"),
-                listOf("+", "+", "+", "*"),
-                listOf("+", "+", "*", "+"),
-                listOf("+", "+", "*", "*"),
-                listOf("+", "*", "+", "+"),
-                listOf("+", "*", "+", "*"),
-                listOf("+", "*", "*", "+"),
-                listOf("+", "*", "*", "*"),
-                listOf("*", "+", "+", "+"),
-                listOf("*", "+", "+", "*"),
-                listOf("*", "+", "*", "+"),
-                listOf("*", "+", "*", "*"),
-                listOf("*", "*", "+", "+"),
-                listOf("*", "*", "+", "*"),
-                listOf("*", "*", "*", "+"),
-                listOf("*", "*", "*", "*")
-            )
-
-            6 -> return listOf(
-                listOf("+", "+", "+", "+", "+"),
-                listOf("+", "+", "+", "+", "*"),
-                listOf("+", "+", "+", "*", "+"),
-                listOf("+", "+", "+", "*", "*"),
-                listOf("+", "+", "*", "+", "+"),
-                listOf("+", "+", "*", "+", "*"),
-                listOf("+", "+", "*", "*", "+"),
-                listOf("+", "+", "*", "*", "*"),
-                listOf("+", "*", "+", "+", "+"),
-                listOf("+", "*", "+", "+", "*"),
-                listOf("+", "*", "+", "*", "+"),
-                listOf("+", "*", "+", "*", "*"),
-                listOf("+", "*", "*", "+", "+"),
-                listOf("+", "*", "*", "+", "*"),
-                listOf("+", "*", "*", "*", "+"),
-                listOf("+", "*", "*", "*", "*"),
-                listOf("*", "+", "+", "+", "+"),
-                listOf("*", "+", "+", "+", "*"),
-                listOf("*", "+", "+", "*", "+"),
-                listOf("*", "+", "+", "*", "*"),
-                listOf("*", "+", "*", "+", "+"),
-                listOf("*", "+", "*", "+", "*"),
-                listOf("*", "+", "*", "*", "+"),
-                listOf("*", "+", "*", "*", "*"),
-                listOf("*", "*", "+", "+", "+"),
-                listOf("*", "*", "+", "+", "*"),
-                listOf("*", "*", "+", "*", "+"),
-                listOf("*", "*", "+", "*", "*"),
-                listOf("*", "*", "*", "+", "+"),
-                listOf("*", "*", "*", "+", "*"),
-                listOf("*", "*", "*", "*", "+"),
-                listOf("*", "*", "*", "*", "*")
-            )
-
-            7 -> return listOf(
-                listOf("+", "+", "+", "+", "+", "+"),
-                listOf("+", "+", "+", "+", "+", "*"),
-                listOf("+", "+", "+", "+", "*", "+"),
-                listOf("+", "+", "+", "+", "*", "*"),
-                listOf("+", "+", "+", "*", "+", "+"),
-                listOf("+", "+", "+", "*", "+", "*"),
-                listOf("+", "+", "+", "*", "*", "+"),
-                listOf("+", "+", "+", "*", "*", "*"),
-                listOf("+", "+", "*", "+", "+", "+"),
-                listOf("+", "+", "*", "+", "+", "*"),
-                listOf("+", "+", "*", "+", "*", "+"),
-                listOf("+", "+", "*", "+", "*", "*"),
-                listOf("+", "+", "*", "*", "+", "+"),
-                listOf("+", "+", "*", "*", "+", "*"),
-                listOf("+", "+", "*", "*", "*", "+"),
-                listOf("+", "+", "*", "*", "*", "*"),
-                listOf("+", "*", "+", "+", "+", "+"),
-                listOf("+", "*", "+", "+", "+", "*"),
-                listOf("+", "*", "+", "+", "*", "+"),
-                listOf("+", "*", "+", "+", "*", "*"),
-                listOf("+", "*", "+", "*", "+", "+"),
-                listOf("+", "*", "+", "*", "+", "*"),
-                listOf("+", "*", "+", "*", "*", "+"),
-                listOf("+", "*", "+", "*", "*", "*"),
-                listOf("+", "*", "*", "+", "+", "+"),
-                listOf("+", "*", "*", "+", "+", "*"),
-                listOf("+", "*", "*", "+", "*", "+"),
-                listOf("+", "*", "*", "+", "*", "*"),
-                listOf("+", "*", "*", "*", "+", "+"),
-                listOf("+", "*", "*", "*", "+", "*"),
-                listOf("+", "*", "*", "*", "*", "+"),
-                listOf("+", "*", "*", "*", "*", "*"),
-                listOf("*", "+", "+", "+", "+", "+"),
-                listOf("*", "+", "+", "+", "+", "*"),
-                listOf("*", "+", "+", "+", "*", "+"),
-                listOf("*", "+", "+", "+", "*", "*"),
-                listOf("*", "+", "+", "*", "+", "+"),
-                listOf("*", "+", "+", "*", "+", "*"),
-                listOf("*", "+", "+", "*", "*", "+"),
-                listOf("*", "+", "+", "*", "*", "*"),
-                listOf("*", "+", "*", "+", "+", "+"),
-                listOf("*", "+", "*", "+", "+", "*"),
-                listOf("*", "+", "*", "+", "*", "+"),
-                listOf("*", "+", "*", "+", "*", "*"),
-                listOf("*", "+", "*", "*", "+", "+"),
-                listOf("*", "+", "*", "*", "+", "*"),
-                listOf("*", "+", "*", "*", "*", "+"),
-                listOf("*", "+", "*", "*", "*", "*"),
-                listOf("*", "*", "+", "+", "+", "+"),
-                listOf("*", "*", "+", "+", "+", "*"),
-                listOf("*", "*", "+", "+", "*", "+"),
-                listOf("*", "*", "+", "+", "*", "*"),
-                listOf("*", "*", "+", "*", "+", "+"),
-                listOf("*", "*", "+", "*", "+", "*"),
-                listOf("*", "*", "+", "*", "*", "+"),
-                listOf("*", "*", "+", "*", "*", "*"),
-                listOf("*", "*", "*", "+", "+", "+"),
-                listOf("*", "*", "*", "+", "+", "*"),
-                listOf("*", "*", "*", "+", "*", "+"),
-                listOf("*", "*", "*", "+", "*", "*"),
-                listOf("*", "*", "*", "*", "+", "+"),
-                listOf("*", "*", "*", "*", "+", "*"),
-                listOf("*", "*", "*", "*", "*", "+"),
-                listOf("*", "*", "*", "*", "*", "*")
-            )
-
-            else -> throw IllegalArgumentException("Too many operands: $numberOfOperants")
+    fun generateAllPermutations(numberOfOperands: Int): List<List<String>> {
+        if (numberOfOperands == 1) {
+            return listOf(listOf("+"), listOf("*"))
         }
+        val smallerPermutations = generateAllPermutations(numberOfOperands - 1)
+        val permutations = mutableListOf<List<String>>()
+        for (perm in smallerPermutations) {
+            permutations.add(perm + "+")
+            permutations.add(perm + "*")
+        }
+        return permutations
     }
 
     fun checkEquationWithAllPermutations(equation: Equation): Boolean {
