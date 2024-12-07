@@ -28,10 +28,10 @@ class Day07 {
     }
 
 
-    fun checkEquationWithAllPermutations(equation: Equation): Boolean {
-        val numberOfPermutations = equation.numberOfPermutations()
+    fun checkEquationWithAllPermutations(equation: Equation, base: Int): Boolean {
+        val numberOfPermutations = equation.numberOfPermutations(base)
         for (counter in 0 until numberOfPermutations) {
-            if (evaluate(equation, convertLongToPermutation(counter, equation.operands.size))) {
+            if (evaluate(equation, convertLongToPermutation(counter, equation.operands.size, base))) {
                 return true
             }
         }
@@ -39,20 +39,26 @@ class Day07 {
     }
 
     fun solvePart1(equations: List<Equation>): Long {
-        return equations.filter { equation -> checkEquationWithAllPermutations(equation) }.sumOf { it.result }
+        return equations.filter { equation -> checkEquationWithAllPermutations(equation, 2) }.sumOf { it.result }
     }
 
-    fun convertLongToPermutation(number: Long, numberOfOperators: Int): List<String> {
+    fun convertLongToPermutation(number: Long, numberOfOperators: Int, base: Int): List<String> {
         val permutations = mutableListOf<String>()
-        val binaryRepresentation = number.toString(2).padStart(numberOfOperators, '0')
+        val binaryRepresentation = number.toString(base).padStart(numberOfOperators, '0')
         for (digit in binaryRepresentation) {
             if (digit == '0') {
                 permutations.add("+")
-            } else {
+            } else if (digit == '1') {
                 permutations.add("*")
+            } else {
+                permutations.add("|")
             }
         }
         return permutations
+    }
+
+    fun solvePart2(equations: List<Equation>): Long {
+        return equations.filter { equation -> checkEquationWithAllPermutations(equation, 3) }.sumOf { it.result }
     }
 
 }
@@ -61,8 +67,8 @@ data class Equation(
     val result: Long,
     val operands: List<Long>
 ) {
-    fun numberOfPermutations(): Long {
-        return 2.0.pow((operands.size).toDouble()).toLong()
+    fun numberOfPermutations(base: Int): Long {
+        return base.toDouble().pow((operands.size).toDouble()).toLong()
     }
 }
 
@@ -70,4 +76,5 @@ fun main() {
     val day07 = Day07()
     val equations = day07.loadData(Path("src", "main", "resources", "Day07_InputData.txt"))
     println("Part 1: ${day07.solvePart1(equations)}")
+    println("Part 2: ${day07.solvePart2(equations)}")
 }

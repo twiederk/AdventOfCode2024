@@ -98,7 +98,7 @@ class Day07Test {
     fun should_check_equation_190_will_all_permuations() {
 
         // act
-        val result = Day07().checkEquationWithAllPermutations(Equation(190, listOf(10, 19)))
+        val result = Day07().checkEquationWithAllPermutations(Equation(190, listOf(10, 19)), 2)
 
         // assert
         assertThat(result).isTrue()
@@ -108,7 +108,7 @@ class Day07Test {
     fun should_check_equation_3267_will_all_permuations() {
 
         // act
-        val result = Day07().checkEquationWithAllPermutations(Equation(3267, listOf(81, 40, 27)))
+        val result = Day07().checkEquationWithAllPermutations(Equation(3267, listOf(81, 40, 27)), 2)
 
         // assert
         assertThat(result).isTrue()
@@ -118,7 +118,7 @@ class Day07Test {
     fun should_check_equation_21037_will_all_permuations() {
 
         // act
-        val result = Day07().checkEquationWithAllPermutations(Equation(21037, listOf(9, 7, 18, 13)))
+        val result = Day07().checkEquationWithAllPermutations(Equation(21037, listOf(9, 7, 18, 13)), 2)
 
         // assert
         assertThat(result).isFalse()
@@ -169,7 +169,7 @@ class Day07Test {
     fun should_convert_0_to_permutation() {
 
         // act
-        val permutation = Day07().convertLongToPermutation(0, 1)
+        val permutation = Day07().convertLongToPermutation(0, 1,2)
 
         // assert
         assertThat(permutation).isEqualTo(listOf("+"))
@@ -179,7 +179,7 @@ class Day07Test {
     fun should_convert_1_to_permutation() {
 
         // act
-        val permutation = Day07().convertLongToPermutation(1, 1)
+        val permutation = Day07().convertLongToPermutation(1, 1,2)
 
         // assert
         assertThat(permutation).isEqualTo(listOf("*"))
@@ -189,7 +189,7 @@ class Day07Test {
     fun should_convert_2_to_permutation() {
 
         // act
-        val permutation = Day07().convertLongToPermutation(2, 2)
+        val permutation = Day07().convertLongToPermutation(2, 2,2)
 
         // assert
         assertThat(permutation).isEqualTo(listOf("*", "+"))
@@ -199,7 +199,7 @@ class Day07Test {
     fun should_convert_3_to_permutation() {
 
         // act
-        val permutation = Day07().convertLongToPermutation(3, 2)
+        val permutation = Day07().convertLongToPermutation(3, 2,2)
 
         // assert
         assertThat(permutation).isEqualTo(listOf("*", "*"))
@@ -209,10 +209,21 @@ class Day07Test {
     fun should_convert_16_to_permutation() {
 
         // act
-        val permutation = Day07().convertLongToPermutation(16, 5)
+        val permutation = Day07().convertLongToPermutation(16, 5,2)
 
         // assert
         assertThat(permutation).isEqualTo(listOf("*", "+", "+", "+", "+"))
     }
 
+    @Test
+    fun should_solve_part2() {
+        // arrange
+        val equations = Day07().loadData(Path("src", "test", "resources", "Day07_TestData.txt"))
+
+        // act
+        val result = Day07().solvePart2(equations)
+
+        // assert
+        assertThat(result).isEqualTo(11387)
+    }
 }
