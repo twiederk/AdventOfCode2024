@@ -1,6 +1,7 @@
 import java.nio.file.Path
 import kotlin.io.path.Path
 import kotlin.io.path.name
+import kotlin.math.pow
 
 class Day07 {
 
@@ -26,23 +27,11 @@ class Day07 {
         return total == equation.result
     }
 
-    fun generateAllPermutations(numberOfOperands: Int): List<List<String>> {
-        if (numberOfOperands == 1) {
-            return listOf(listOf("+"), listOf("*"))
-        }
-        val smallerPermutations = generateAllPermutations(numberOfOperands - 1)
-        val permutations = mutableListOf<List<String>>()
-        for (perm in smallerPermutations) {
-            permutations.add(perm + "+")
-            permutations.add(perm + "*")
-        }
-        return permutations
-    }
 
     fun checkEquationWithAllPermutations(equation: Equation): Boolean {
-        val permutations = generateAllPermutations(equation.operands.size)
-        for (permutation in permutations) {
-            if (evaluate(equation, permutation)) {
+        val numberOfPermutations = equation.numberOfPermutations()
+        for (counter in 0 until numberOfPermutations) {
+            if (evaluate(equation, convertLongToPermutation(counter, equation.operands.size))) {
                 return true
             }
         }
@@ -53,9 +42,9 @@ class Day07 {
         return equations.filter { equation -> checkEquationWithAllPermutations(equation) }.sumOf { it.result }
     }
 
-    fun convertIntToPermutation(number: Int): List<String> {
+    fun convertLongToPermutation(number: Long, numberOfOperators: Int): List<String> {
         val permutations = mutableListOf<String>()
-        val binaryRepresentation = number.toString(2)
+        val binaryRepresentation = number.toString(2).padStart(numberOfOperators, '0')
         for (digit in binaryRepresentation) {
             if (digit == '0') {
                 permutations.add("+")
@@ -71,7 +60,11 @@ class Day07 {
 data class Equation(
     val result: Long,
     val operands: List<Long>
-)
+) {
+    fun numberOfPermutations(): Long {
+        return 2.0.pow((operands.size).toDouble()).toLong()
+    }
+}
 
 fun main() {
     val day07 = Day07()

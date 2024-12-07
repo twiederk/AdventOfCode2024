@@ -95,36 +95,6 @@ class Day07Test {
     }
 
     @Test
-    fun should_generate_all_permutations_for_2_operands() {
-
-        // act
-        val permutations = Day07().generateAllPermutations(2)
-
-        // assert
-        assertThat(permutations).hasSize(4)
-    }
-
-    @Test
-    fun should_generate_all_permutations_for_3_operands() {
-
-        // act
-        val permutations = Day07().generateAllPermutations(3)
-
-        // assert
-        assertThat(permutations).hasSize(8)
-    }
-
-    @Test
-    fun should_generate_all_permutations_for_4_operands() {
-
-        // act
-        val permutations = Day07().generateAllPermutations(4)
-
-        // assert
-        assertThat(permutations).hasSize(16)
-    }
-
-    @Test
     fun should_check_equation_190_will_all_permuations() {
 
         // act
@@ -199,7 +169,7 @@ class Day07Test {
     fun should_convert_0_to_permutation() {
 
         // act
-        val permutation = Day07().convertIntToPermutation(0)
+        val permutation = Day07().convertLongToPermutation(0, 1)
 
         // assert
         assertThat(permutation).isEqualTo(listOf("+"))
@@ -209,7 +179,7 @@ class Day07Test {
     fun should_convert_1_to_permutation() {
 
         // act
-        val permutation = Day07().convertIntToPermutation(1)
+        val permutation = Day07().convertLongToPermutation(1, 1)
 
         // assert
         assertThat(permutation).isEqualTo(listOf("*"))
@@ -219,7 +189,7 @@ class Day07Test {
     fun should_convert_2_to_permutation() {
 
         // act
-        val permutation = Day07().convertIntToPermutation(2)
+        val permutation = Day07().convertLongToPermutation(2, 2)
 
         // assert
         assertThat(permutation).isEqualTo(listOf("*", "+"))
@@ -229,7 +199,7 @@ class Day07Test {
     fun should_convert_3_to_permutation() {
 
         // act
-        val permutation = Day07().convertIntToPermutation(3)
+        val permutation = Day07().convertLongToPermutation(3, 2)
 
         // assert
         assertThat(permutation).isEqualTo(listOf("*", "*"))
@@ -239,7 +209,7 @@ class Day07Test {
     fun should_convert_16_to_permutation() {
 
         // act
-        val permutation = Day07().convertIntToPermutation(16)
+        val permutation = Day07().convertLongToPermutation(16, 5)
 
         // assert
         assertThat(permutation).isEqualTo(listOf("*", "+", "+", "+", "+"))
