@@ -10,6 +10,7 @@
 | [4] | [Ceres Search]       | &#9733; | &#9733; | Word puzzle (nice one)            |
 | [5] | [Print Queue]        | &#9733; | &#9733; | Walking a graph                   |
 | [6] | [Guard Gallivant]    | &#9733; | &#9733; | Moving through a maze             |
+| [7] | [Bridge Repair]      | &#9733; | &#9733; | Permutations                      |
 
 ## Resources
 
@@ -23,6 +24,7 @@
 [4]: src/main/kotlin/Day04.kt
 [5]: src/main/kotlin/Day05.kt
 [6]: src/main/kotlin/Day06.kt
+[7]: src/main/kotlin/Day07.kt
 
 [Historian Hysteria]: https://adventofcode.com/2024/day/1
 [Red-Nosed Reports]: https://adventofcode.com/2024/day/2
@@ -30,3 +32,5 @@
 [Ceres Search]: https://adventofcode.com/2024/day/4
 [Print Queue]: https://adventofcode.com/2024/day/5
 [Guard Gallivant]: https://adventofcode.com/2024/day/6
+[Bridge Repair]: https://adventofcode.com/2024/day/7
+
