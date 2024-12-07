@@ -19,9 +19,8 @@ class Day07 {
         for (i in 1..<equation.operands.size) {
             when (operators[i - 1]) {
                 "+" -> total += equation.operands[i]
-                "-" -> total -= equation.operands[i]
                 "*" -> total *= equation.operands[i]
-                "/" -> total /= equation.operands[i]
+                "|" -> total = "${total}${equation.operands[i]}".toLong()
             }
         }
         return total == equation.result

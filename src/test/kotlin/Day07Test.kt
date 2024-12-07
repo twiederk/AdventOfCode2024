@@ -164,6 +164,35 @@ class Day07Test {
 
         // assert
         assertThat(result).isEqualTo(3749)
-
     }
+
+    @Test
+    fun should_check_equation_156_with_concat() {
+
+        // act
+        val result = Day07().evaluate(Equation(156, listOf(15, 6)), listOf("|"))
+
+        // assert
+        assertThat(result).isTrue()
+    }
+
+    @Test
+    fun should_check_equation_7290_with_multiply_concat_multiply() {
+
+        // act
+        val result = Day07().evaluate(Equation(7290, listOf(6, 8, 6, 15)), listOf("*", "|", "*"))
+
+        // assert
+        assertThat(result).isTrue()
+    }
+
+    @Test
+    fun should_check_equation_192_with_concat_plus() {
+        // act
+        val result = Day07().evaluate(Equation(192, listOf(17, 8, 14)), listOf("|", "+"))
+
+        // assert
+        assertThat(result).isTrue()
+    }
+
 }
