@@ -140,6 +140,19 @@ class Day06 {
         return newGrid
     }
 
+    fun evaluate(equation: Equation, operators: List<String>): Boolean {
+        var total = equation.operands[0]
+        for (i in 1..<equation.operands.size) {
+            when (operators[i - 1]) {
+                "+" -> total += equation.operands[i]
+                "-" -> total -= equation.operands[i]
+                "*" -> total *= equation.operands[i]
+                "/" -> total /= equation.operands[i]
+            }
+        }
+        return total == equation.result
+    }
+
 
     companion object {
         val END_POINT = Point2D(-1, -1)
