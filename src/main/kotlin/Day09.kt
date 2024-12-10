@@ -28,9 +28,46 @@ class Day09 {
         return filesystem
     }
 
+    fun fragmenter(fileSystem: MutableList<Int>): List<Int> {
+        var leftPointer = 0
+        var rightPointer = fileSystem.size - 1
+        while (leftPointer < rightPointer) {
+            if (fileSystem[leftPointer] == FREE) {
+                // swap
+                val temp = fileSystem[leftPointer]
+                fileSystem[leftPointer] = fileSystem[rightPointer]
+                fileSystem[rightPointer] = temp
+                rightPointer--
+                while (fileSystem[rightPointer] == FREE) {
+                    rightPointer--
+                }
+            }
+            leftPointer++
+        }
+        return fileSystem
+    }
+
+    fun checksum(filesystem: List<Int>): Long {
+        return filesystem.withIndex()
+            .filter { it.value != FREE }
+            .sumOf { it.index * it.value.toLong() }
+    }
+
+    fun solvePart1(diskMap: String): Long {
+        val filesystem = filesystem(diskMap)
+        val newFilesystem = fragmenter(filesystem.toMutableList())
+        return checksum(newFilesystem)
+    }
+
     companion object {
         const val FREE = -1
     }
 
 }
 
+fun main() {
+    val day09 = Day09()
+    val diskMap = day09.loadData(Path.of("src", "main", "resources", "Day09_InputData.txt"))
+    val checksum = day09.solvePart1(diskMap)
+    println("part1: $checksum")
+}
