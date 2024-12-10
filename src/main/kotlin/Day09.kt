@@ -77,6 +77,35 @@ class Day09 {
         return fileSize
     }
 
+    fun defrag(fileSystem: MutableList<Int>): List<Int> {
+        var rightPointer = fileSystem.size - 1
+        while (fileSystem[rightPointer] != 0) {
+            while (fileSystem[rightPointer] == FREE) {
+                rightPointer--
+            }
+            val fileSize = fileSize(fileSystem, rightPointer)
+            val freeSpace = freeSpace(fileSystem, fileSize, rightPointer)
+            if (freeSpace == NO_FREE_SPACE) {
+                rightPointer -= fileSize
+                continue
+            }
+            for (dest in freeSpace..<freeSpace + fileSize) {
+                fileSystem[dest] = fileSystem[rightPointer]
+            }
+            for (src in rightPointer - fileSize + 1..<rightPointer + 1) {
+                fileSystem[src] = FREE
+            }
+            rightPointer -= fileSize
+        }
+        return fileSystem
+    }
+
+    fun solvePart2(diskMap: String): Long {
+        val filesystem = filesystem(diskMap)
+        val newFilesystem = defrag(filesystem.toMutableList())
+        return checksum(newFilesystem)
+    }
+
     companion object {
         const val FREE = -1
         const val NO_FREE_SPACE = -2
@@ -87,6 +116,8 @@ class Day09 {
 fun main() {
     val day09 = Day09()
     val diskMap = day09.loadData(Path.of("src", "main", "resources", "Day09_InputData.txt"))
-    val checksum = day09.solvePart1(diskMap)
-    println("part1: $checksum")
+    println("part1: ${day09.solvePart1(diskMap)}")
+    println("part2: ${day09.solvePart2(diskMap)}")
+    // part2: correct: 6_327_174_563_252
+    // part2: mine:    6_327_174_567_418
 }

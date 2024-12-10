@@ -210,6 +210,120 @@ class Day09Test {
         assertThat(fileSize).isEqualTo(4)
     }
 
+    @Test
+    fun should_defrag_simple_filesystem() {
+        // arrange
+        val fileSystem = mutableListOf(
+            0, 0, FREE, FREE, FREE, 1, 1, 1, FREE, FREE, 2, 2, 3, 3, 3
+        )
+
+        // act
+        val newFileSystem = Day09().defrag(fileSystem)
+
+        // assert
+        assertThat(newFileSystem).containsExactly(
+            0, 0, 3, 3, 3, 1, 1, 1, 2, 2, FREE, FREE, FREE, FREE, FREE
+        )
+    }
+
+    @Test
+    fun should_defrag_example() {
+        // arrange
+        val filesystem = mutableListOf(
+            0, 0,
+            FREE, FREE, FREE,
+            1, 1, 1,
+            FREE, FREE, FREE,
+            2,
+            FREE, FREE, FREE,
+            3, 3, 3,
+            FREE,
+            4, 4,
+            FREE,
+            5, 5, 5, 5,
+            FREE,
+            6, 6, 6, 6,
+            FREE,
+            7, 7, 7,
+            FREE,
+            8, 8, 8, 8,
+            9, 9
+        )
+
+        // act
+        val newFilesystem = Day09().defrag(filesystem)
+
+        // assert
+        assertThat(newFilesystem).containsExactly(
+            // 00992111777.44.333....5555.6666.....8888..
+            0,
+            0,
+            9,
+            9,
+            2,
+            1,
+            1,
+            1,
+            7,
+            7,
+            7,
+            FREE,
+            4,
+            4,
+            FREE,
+            3,
+            3,
+            3,
+            FREE,
+            FREE,
+            FREE,
+            FREE,
+            5,
+            5,
+            5,
+            5,
+            FREE,
+            6,
+            6,
+            6,
+            6,
+            FREE,
+            FREE,
+            FREE,
+            FREE,
+            FREE,
+            8,
+            8,
+            8,
+            8,
+            FREE,
+            FREE,
+        )
+    }
+
+    @Test
+    fun should_solve_part2() {
+
+        // act
+        val checksum = Day09().solvePart2("2333133121414131402")
+
+        // assert
+        assertThat(checksum).isEqualTo(2858)
+    }
+
+    @Test
+    fun should_solve_part2_with_real_data() {
+
+        // arrange
+        val diskMap = Day09().loadData(Path.of("src", "main", "resources", "Day09_InputData.txt"))
+
+        // act
+        val checksum = Day09().solvePart2(diskMap)
+
+        // assert
+        assertThat(checksum).isEqualTo(6_327_174_563_252)
+    }
+
 }
 
 
