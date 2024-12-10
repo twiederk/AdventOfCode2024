@@ -41,6 +41,16 @@ class Day10Test {
         ".....01",
     )
 
+    private val example_5 = listOf(
+        ".....0.",
+        "..4321.",
+        "..5..2.",
+        "..6543.",
+        "..7..4.",
+        "..8765.",
+        "..9....",
+    )
+
 
     private val exampleData = listOf(
         "89010123",
@@ -85,10 +95,10 @@ class Day10Test {
     @Test
     fun should_return_char_from_grid_at_position() {
         // act
-        val char = Day10().height(Point2D(0, 0), exampleData)
+        val height = Day10().height(Point2D(0, 0), exampleData)
 
         // assert
-        assertThat(char).isEqualTo(8)
+        assertThat(height).isEqualTo(8)
 
     }
 
@@ -119,10 +129,11 @@ class Day10Test {
         // arrange
 
         // act
-        val score = Day10().score(example_1, Point2D(0, 0))
+        val (score, rating) = Day10().score(example_1, Point2D(0, 0))
 
         // assert
         assertThat(score).isEqualTo(1)
+        assertThat(rating).isEqualTo(16)
     }
 
     @Test
@@ -138,37 +149,41 @@ class Day10Test {
     @Test
     fun should_return_score_2_for_example_2() {
         // act
-        val height = Day10().score(example_2, Point2D(3, 0))
+        val (score, rating) = Day10().score(example_2, Point2D(3, 0))
 
         // assert
-        assertThat(height).isEqualTo(2)
+        assertThat(score).isEqualTo(2)
+        assertThat(rating).isEqualTo(2)
     }
 
     @Test
     fun should_return_score_4_for_example_3() {
         // act
-        val height = Day10().score(example_3, Point2D(3, 0))
+        val (score, rating) = Day10().score(example_3, Point2D(3, 0))
 
         // assert
-        assertThat(height).isEqualTo(4)
+        assertThat(score).isEqualTo(4)
+        assertThat(rating).isEqualTo(13)
     }
 
     @Test
     fun should_return_score_1_for_example_4_with_trailhead_top() {
         // act
-        val height = Day10().score(example_4, Point2D(1, 0))
+        val (score, rating) = Day10().score(example_4, Point2D(1, 0))
 
         // assert
-        assertThat(height).isEqualTo(1)
+        assertThat(score).isEqualTo(1)
+        assertThat(rating).isEqualTo(1)
     }
 
     @Test
     fun should_return_score_2_for_example_4_with_trailhead_bottom() {
         // act
-        val height = Day10().score(example_4, Point2D(5, 6))
+        val (score, rating) = Day10().score(example_4, Point2D(5, 6))
 
         // assert
-        assertThat(height).isEqualTo(2)
+        assertThat(score).isEqualTo(2)
+        assertThat(rating).isEqualTo(2)
     }
 
     @Test
@@ -179,5 +194,27 @@ class Day10Test {
 
         // assert
         assertThat(sumOfScores).isEqualTo(3)
+    }
+
+    @Test
+    fun should_return_score_1_and_rating_3_for_example_5() {
+        // arrange
+
+        // act
+        val (score, rating) = Day10().score(example_5, Point2D(5, 0))
+
+        // assert
+        assertThat(score).isEqualTo(1)
+        assertThat(rating).isEqualTo(3)
+    }
+
+    @Test
+    fun should_solve_part2() {
+        // act
+        val sumOfScores = Day10().solvePart2(exampleData)
+
+        // assert
+        assertThat(sumOfScores).isEqualTo(81)
+
     }
 }

@@ -18,20 +18,17 @@ class Day10 {
         return trailheads
     }
 
-    fun score(grid: List<String>, trailhead: Point2D): Int {
+    fun score(grid: List<String>, trailhead: Point2D): Pair<Int, Int> {
+        var count = 0
         val targets = mutableSetOf<Point2D>()
-        val visited = mutableSetOf<Point2D>()
         val queue = mutableListOf(trailhead)
         while (queue.isNotEmpty()) {
             val current = queue.removeAt(0)
             if (height(current, grid) == 9) {
                 targets.add(current)
+                count++
                 continue
             }
-            if (visited.contains(current)) {
-                continue
-            }
-            visited.add(current)
             val neighbours = current.cardinalNeighbors()
             val currentHeight = height(current, grid)
             neighbours.forEach { neighbour ->
@@ -40,7 +37,7 @@ class Day10 {
                 }
             }
         }
-        return targets.size
+        return Pair(targets.size, count)
     }
 
     fun isSafe(position: Point2D, currentHeight: Int, grid: List<String>): Boolean {
@@ -58,7 +55,12 @@ class Day10 {
 
     fun solvePart1(grid: List<String>): Int {
         val trailheads = trailheads(grid)
-        return trailheads.map { score(grid, it) }.sum()
+        return trailheads.sumOf { score(grid, it).first }
+    }
+
+    fun solvePart2(grid: List<String>): Int {
+        val trailheads = trailheads(grid)
+        return trailheads.sumOf { score(grid, it).second }
     }
 
 }
@@ -66,5 +68,6 @@ class Day10 {
 fun main() {
     val day10 = Day10()
     val data = day10.loadData(Path.of("src", "main", "resources", "Day10_InputData.txt"))
-    println(day10.solvePart1(data))
+    println("part1: ${day10.solvePart1(data)}")
+    println("part2: ${day10.solvePart2(data)}")
 }
