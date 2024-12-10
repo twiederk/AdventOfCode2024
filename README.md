@@ -11,7 +11,7 @@
 |  [5] | [Print Queue]           | &#9733; | &#9733; | Walking a graph                   |
 |  [6] | [Guard Gallivant]       | &#9733; | &#9733; | Moving through a maze             |
 |  [7] | [Bridge Repair]         | &#9733; | &#9733; | Permutations                      |
-|  [8] | [Resonant Collinearity] |         |         |                                   |
+|  [8] | [Resonant Collinearity] | &#9733; | &#9733; |                                   |
 |  [9] | [Disk Fragmenter]       |         |         |                                   |
 | [10] | [Hoof It]               | &#9733; | &#9733; | BFS                               |
 
@@ -28,11 +28,8 @@
 [5]: src/main/kotlin/Day05.kt
 [6]: src/main/kotlin/Day06.kt
 [7]: src/main/kotlin/Day07.kt
-
 [8]: src/main/kotlin/Day08.kt
-
 [9]: src/main/kotlin/Day09.kt
-
 [10]: src/main/kotlin/Day10.kt
 
 [Historian Hysteria]: https://adventofcode.com/2024/day/1
@@ -42,10 +39,7 @@
 [Print Queue]: https://adventofcode.com/2024/day/5
 [Guard Gallivant]: https://adventofcode.com/2024/day/6
 [Bridge Repair]: https://adventofcode.com/2024/day/7
-
 [Resonant Collinearity]: https://adventofcode.com/2024/day/8
-
 [Disk Fragmenter]: https://adventofcode.com/2024/day/9
-
 [Hoof It]: https://adventofcode.com/2024/day/10
 
