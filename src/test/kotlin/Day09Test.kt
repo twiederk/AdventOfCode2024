@@ -5,6 +5,16 @@ import java.nio.file.Path
 
 class Day09Test {
 
+    val freeSpaceFileSystem = listOf(
+        0,
+        FREE, FREE,
+        1, 1,
+        FREE, FREE, FREE,
+        2, 2, 2,
+        FREE, FREE, FREE, FREE,
+        3, 3, 3, 3,
+    )
+
     @Test
     fun should_load_data() {
 
@@ -132,15 +142,54 @@ class Day09Test {
 
     @Test
     fun should_solve_part1() {
-        // arrange
 
         // act
         val checksum = Day09().solvePart1("2333133121414131402")
 
         // assert
         assertThat(checksum).isEqualTo(1928)
-
     }
+
+    @Test
+    fun should_find_free_space_with_size_1() {
+
+        // act
+        val freeSpace = Day09().freeSpace(freeSpaceFileSystem, 1, freeSpaceFileSystem.size)
+
+        // assert
+        assertThat(freeSpace).isEqualTo(1)
+    }
+
+    @Test
+    fun should_find_free_space_with_size_2() {
+
+        // act
+        val freeSpace = Day09().freeSpace(freeSpaceFileSystem, 2, freeSpaceFileSystem.size)
+
+        // assert
+        assertThat(freeSpace).isEqualTo(1)
+    }
+
+    @Test
+    fun should_find_free_space_with_size_3() {
+
+        // act
+        val freeSpace = Day09().freeSpace(freeSpaceFileSystem, 3, freeSpaceFileSystem.size)
+
+        // assert
+        assertThat(freeSpace).isEqualTo(5)
+    }
+
+    @Test
+    fun should_find_free_space_with_size_4() {
+
+        // act
+        val freeSpace = Day09().freeSpace(freeSpaceFileSystem, 4, freeSpaceFileSystem.size)
+
+        // assert
+        assertThat(freeSpace).isEqualTo(11)
+    }
+
 }
 
 

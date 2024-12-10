@@ -59,8 +59,18 @@ class Day09 {
         return checksum(newFilesystem)
     }
 
+    fun freeSpace(fileSystem: List<Int>, fileSize: Int, end: Int): Int {
+        for (index in 0..<end) {
+            if (fileSystem.subList(index, index + fileSize).all { it == FREE }) {
+                return index
+            }
+        }
+        return -2
+    }
+
     companion object {
         const val FREE = -1
+        const val NO_FREE_SPACE = -2
     }
 
 }
