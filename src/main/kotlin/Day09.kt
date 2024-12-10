@@ -7,10 +7,6 @@ class Day09 {
         return Resources.resourceAsText(path.fileName.toString())
     }
 
-    fun checksum(fileSystem: String): Int {
-        return fileSystem.mapIndexed { index, char -> if (char == '.') 0 else index * char.digitToInt() }.sum()
-    }
-
     fun filesystem(diskMap: String): List<Int> {
         val filesystem = mutableListOf<Int>()
         diskMap.forEachIndexed { index, char ->
@@ -25,7 +21,7 @@ class Day09 {
                 // empty space
                 val fileSize = char.digitToInt()
                 repeat(fileSize) {
-                    filesystem.add(EMPTY_SPACE)
+                    filesystem.add(FREE)
                 }
             }
         }
@@ -33,7 +29,7 @@ class Day09 {
     }
 
     companion object {
-        const val EMPTY_SPACE = -1
+        const val FREE = -1
     }
 
 }

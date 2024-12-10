@@ -1,3 +1,4 @@
+import Day09.Companion.FREE
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.nio.file.Path
@@ -15,23 +16,23 @@ class Day09Test {
     }
 
     @Test
-    fun should_calculate_checksum() {
-
-        // act
-        val checksum = Day09().checksum("0099811188827773336446555566..............")
-
-        // assert
-        assertThat(checksum).isEqualTo(1928)
-    }
-
-    @Test
-    fun should_convert_disk_map_to_filesystem() {
+    fun should_convert_disk_map_123_to_filesystem() {
 
         // act
         val filesystem = Day09().filesystem("123")
 
         // assert
-        assertThat(filesystem).containsExactly(0, -1, -1, 1, 1, 1)
+        assertThat(filesystem).containsExactly(0, FREE, FREE, 1, 1, 1)
+    }
+
+    @Test
+    fun should_convert_disk_map_12345_to_filesystem() {
+
+        // act
+        val filesystem = Day09().filesystem("12345")
+
+        // assert
+        assertThat(filesystem).containsExactly(0, FREE, FREE, 1, 1, 1, FREE, FREE, FREE, FREE, 2, 2, 2, 2, 2)
     }
 
 }
