@@ -74,16 +74,12 @@ class Day10Test {
     }
 
     @Test
-    fun should_count_hiking_trails() {
-        // arrange
-        val trailhead = Point2D(4, 0)
-
+    fun should_solve_part1_for_exampleData() {
         // act
-        val hikingTrailsCount = Day10().score(exampleData, trailhead)
+        val sumOfScores = Day10().solvePart1(exampleData)
 
         // assert
-        assertThat(hikingTrailsCount).isEqualTo(5)
-
+        assertThat(sumOfScores).isEqualTo(36)
     }
 
     @Test
@@ -164,5 +160,24 @@ class Day10Test {
 
         // assert
         assertThat(height).isEqualTo(1)
+    }
+
+    @Test
+    fun should_return_score_2_for_example_4_with_trailhead_bottom() {
+        // act
+        val height = Day10().score(example_4, Point2D(5, 6))
+
+        // assert
+        assertThat(height).isEqualTo(2)
+    }
+
+    @Test
+    fun should_solve_part1_for_example_4() {
+
+        // act
+        val sumOfScores = Day10().solvePart1(example_4)
+
+        // assert
+        assertThat(sumOfScores).isEqualTo(3)
     }
 }

@@ -56,4 +56,15 @@ class Day10 {
         }
     }
 
+    fun solvePart1(grid: List<String>): Int {
+        val trailheads = trailheads(grid)
+        return trailheads.map { score(grid, it) }.sum()
+    }
+
+}
+
+fun main() {
+    val day10 = Day10()
+    val data = day10.loadData(Path.of("src", "main", "resources", "Day10_InputData.txt"))
+    println(day10.solvePart1(data))
 }
