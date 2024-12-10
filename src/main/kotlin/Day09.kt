@@ -60,12 +60,21 @@ class Day09 {
     }
 
     fun freeSpace(fileSystem: List<Int>, fileSize: Int, end: Int): Int {
-        for (index in 0..<end) {
+        for (index in 0..<end - fileSize) {
             if (fileSystem.subList(index, index + fileSize).all { it == FREE }) {
                 return index
             }
         }
         return -2
+    }
+
+    fun fileSize(fileSystem: List<Int>, pointer: Int): Int {
+        val fileId = fileSystem[pointer]
+        var fileSize = 1
+        while (fileSystem[pointer - fileSize] == fileId) {
+            fileSize++
+        }
+        return fileSize
     }
 
     companion object {

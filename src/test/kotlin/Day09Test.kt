@@ -190,6 +190,26 @@ class Day09Test {
         assertThat(freeSpace).isEqualTo(11)
     }
 
+    @Test
+    fun should_find_free_space_with_size_5() {
+
+        // act
+        val freeSpace = Day09().freeSpace(freeSpaceFileSystem, 5, freeSpaceFileSystem.size)
+
+        // assert
+        assertThat(freeSpace).isEqualTo(Day09.NO_FREE_SPACE)
+    }
+
+    @Test
+    fun should_find_file_size() {
+
+        // act
+        val fileSize = Day09().fileSize(freeSpaceFileSystem, freeSpaceFileSystem.size - 1)
+
+        // assert
+        assertThat(fileSize).isEqualTo(4)
+    }
+
 }
 
 
