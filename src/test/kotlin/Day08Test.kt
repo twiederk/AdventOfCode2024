@@ -4,6 +4,21 @@ import java.nio.file.Path
 
 class Day08Test {
 
+    private val example = listOf(
+        "............",
+        "........0...",
+        ".....0......",
+        ".......0....",
+        "....0.......",
+        "......A.....",
+        "............",
+        "............",
+        "........A...",
+        ".........A..",
+        "............",
+        "............",
+    )
+
     @Test
     fun should_load_data() {
         // arrange
@@ -15,4 +30,17 @@ class Day08Test {
         assertThat(grid).hasSize(12)
     }
 
+    @Test
+    fun should_find_all_antennas() {
+        // arrange
+
+        // act
+        val antennas = Day08().antennas(example)
+
+        // assert
+        assertThat(antennas).hasSize(2)
+        assertThat(antennas['0']).hasSize(4)
+        assertThat(antennas['A']).hasSize(3)
+
+    }
 }
