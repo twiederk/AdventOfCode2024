@@ -24,6 +24,16 @@ class Day09Test {
         assertThat(checksum).isEqualTo(1928)
     }
 
+    @Test
+    fun should_convert_disk_map_to_filesystem() {
+
+        // act
+        val filesystem = Day09().filesystem("123")
+
+        // assert
+        assertThat(filesystem).containsExactly(0, -1, -1, 1, 1, 1)
+    }
+
 }
 
 
