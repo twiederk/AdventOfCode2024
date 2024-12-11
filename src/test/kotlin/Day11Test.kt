@@ -148,5 +148,41 @@ class Day11Test {
         assertThat(newStones).containsExactly(1L, 2024L, 1L, 0L, 9L, 9L, 2021976L)
     }
 
+    @Test
+    fun should_blink_6_times_with_test_data() {
+        // arrange
+        val rules = listOf(Day11.Rule1(), Day11.Rule2(), Day11.Rule3())
+        val stones = listOf(125L, 17L)
+
+        // act
+        val newStones = Day11().blinking(stones, rules, 6)
+
+        // assert
+        assertThat(newStones).containsExactly(
+            2097446912L,
+            14168L,
+            4048L,
+            2L,
+            0L,
+            2L,
+            4L,
+            40L,
+            48L,
+            2024L,
+            40L,
+            48L,
+            80L,
+            96L,
+            2L,
+            8L,
+            6L,
+            7L,
+            6L,
+            0L,
+            3L,
+            2L
+        )
+
+    }
 }
 

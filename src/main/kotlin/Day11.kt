@@ -17,9 +17,13 @@ class Day11 {
     }
 
     fun blink(stones: List<Long>, rules: List<Rule>): List<Long> {
-        val newStones = mutableListOf<Long>()
-        for (stone in stones) {
-            newStones.addAll(executeRules(stone, rules))
+        return stones.flatMap { stone -> executeRules(stone, rules) }
+    }
+
+    fun blinking(stones: List<Long>, rules: List<Rule>, numberOfBlinks: Int): List<Long> {
+        var newStones = stones
+        for (i in 0 until numberOfBlinks) {
+            newStones = blink(newStones, rules)
         }
         return newStones
     }
