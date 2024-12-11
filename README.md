@@ -14,6 +14,7 @@
 |  [8] | [Resonant Collinearity] | &#9733; | &#9733; |                                   |
 |  [9] | [Disk Fragmenter]       | &#9733; | &#9733; |                                   |
 | [10] | [Hoof It]               | &#9733; | &#9733; | BFS                               |
+| [11] | [Plutonian Pebbles]     | &#9733; |         | LCM                               |
 
 ## Resources
 
@@ -32,6 +33,8 @@
 [9]: src/main/kotlin/Day09.kt
 [10]: src/main/kotlin/Day10.kt
 
+[11]: src/main/kotlin/Day11.kt
+
 [Historian Hysteria]: https://adventofcode.com/2024/day/1
 [Red-Nosed Reports]: https://adventofcode.com/2024/day/2
 [Mull It Over]: https://adventofcode.com/2024/day/3
@@ -42,4 +45,6 @@
 [Resonant Collinearity]: https://adventofcode.com/2024/day/8
 [Disk Fragmenter]: https://adventofcode.com/2024/day/9
 [Hoof It]: https://adventofcode.com/2024/day/10
+
+[Plutonian Pebbles]: https://adventofcode.com/2024/day/11
 

@@ -159,29 +159,38 @@ class Day11Test {
 
         // assert
         assertThat(newStones).containsExactly(
-            2097446912L,
-            14168L,
-            4048L,
-            2L,
-            0L,
-            2L,
-            4L,
-            40L,
-            48L,
-            2024L,
-            40L,
-            48L,
-            80L,
-            96L,
-            2L,
-            8L,
-            6L,
-            7L,
-            6L,
-            0L,
-            3L,
-            2L
+            2097446912L, 14168L, 4048L, 2L, 0L, 2L, 4L, 40L, 48L, 2024L, 40L, 48L,
+            80L, 96L, 2L, 8L, 6L, 7L, 6L, 0L, 3L, 2L
         )
+    }
+
+    @Test
+    fun should_count_number_of_stones() {
+        // arrange
+
+        // act
+        val result = Day11().count(
+            listOf(
+                2097446912L, 14168L, 4048L, 2L, 0L, 2L, 4L, 40L, 48L, 2024L, 40L, 48L, 80L, 96L, 2L, 8L,
+                6L, 7L, 6L, 0L, 3L, 2L
+            )
+        )
+
+        // assert
+        assertThat(result).isEqualTo(22)
+    }
+
+    @Test
+    fun should_solve_part1() {
+        // arrange
+        val stones = listOf(125L, 17L)
+        val rules = listOf(Day11.Rule1(), Day11.Rule2(), Day11.Rule3())
+
+        // act
+        val result = Day11().solvePart1(stones, rules, 25)
+
+        // assert
+        assertThat(result).isEqualTo(55312)
 
     }
 }

@@ -28,6 +28,14 @@ class Day11 {
         return newStones
     }
 
+    fun count(stones: List<Long>): Long {
+        return stones.count().toLong()
+    }
+
+    fun solvePart1(stones: List<Long>, rules: List<Rule>, blinks: Int): Long {
+        return count(blinking(stones, rules, blinks))
+    }
+
     interface Rule {
         fun usable(stone: Long): Boolean
         fun execute(stone: Long): List<Long>
@@ -66,4 +74,12 @@ class Day11 {
             return listOf(stone * 2024)
         }
     }
+}
+
+fun main() {
+    val day11 = Day11()
+    val stones = day11.loadData(Path.of("src", "main", "resources", "Day11_InputData.txt"))
+    val rules = listOf(Day11.Rule1(), Day11.Rule2(), Day11.Rule3())
+    println("part1: ${day11.solvePart1(stones, rules, 25)}")
+    println("part2: ${day11.solvePart1(stones, rules, 75)}")
 }
