@@ -99,4 +99,54 @@ class Day11Test {
         assertThat(stones).containsExactly(4048L)
     }
 
+    @Test
+    fun should_execute_Rule1_from_rules() {
+        // arrange
+        val rules = listOf(Day11.Rule1(), Day11.Rule2(), Day11.Rule3())
+
+        // act
+        val stones = Day11().executeRules(0L, rules)
+
+        // assert
+        assertThat(stones).containsExactly(1L)
+    }
+
+    @Test
+    fun should_execute_Rule3_from_rules() {
+        // arrange
+        val rules = listOf(Day11.Rule1(), Day11.Rule2(), Day11.Rule3())
+
+        // act
+        val stones = Day11().executeRules(1L, rules)
+
+        // assert
+        assertThat(stones).containsExactly(2024L)
+    }
+
+    @Test
+    fun should_execute_Rule2_from_rules() {
+        // arrange
+        val rules = listOf(Day11.Rule1(), Day11.Rule2(), Day11.Rule3())
+
+        // act
+        val stones = Day11().executeRules(10L, rules)
+
+        // assert
+        assertThat(stones).containsExactly(1L, 0L)
+    }
+
+    @Test
+    fun should_blink_once_with_simple_example() {
+        // arrange
+        val rules = listOf(Day11.Rule1(), Day11.Rule2(), Day11.Rule3())
+        val stones = listOf(0L, 1L, 10L, 99L, 999L)
+
+        // act
+        val newStones = Day11().blink(stones, rules)
+
+        // assert
+        assertThat(newStones).containsExactly(1L, 2024L, 1L, 0L, 9L, 9L, 2021976L)
+    }
+
 }
+

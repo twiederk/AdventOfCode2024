@@ -7,6 +7,23 @@ class Day11 {
         return data.split(' ').map { it.toLong() }
     }
 
+    fun executeRules(stone: Long, rules: List<Rule>): List<Long> {
+        for (rule in rules) {
+            if (rule.usable(stone)) {
+                return rule.execute(stone)
+            }
+        }
+        throw IllegalArgumentException("No rule found for stone $stone")
+    }
+
+    fun blink(stones: List<Long>, rules: List<Rule>): List<Long> {
+        val newStones = mutableListOf<Long>()
+        for (stone in stones) {
+            newStones.addAll(executeRules(stone, rules))
+        }
+        return newStones
+    }
+
     interface Rule {
         fun usable(stone: Long): Boolean
         fun execute(stone: Long): List<Long>
