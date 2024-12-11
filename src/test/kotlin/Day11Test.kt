@@ -70,4 +70,33 @@ class Day11Test {
         assertThat(stones).containsExactly(10L, 0L)
     }
 
+    @Test
+    fun should_return_true_when_Rule3_is_usable() {
+        // act
+        val result = Day11.Rule3().usable(100L)
+
+        // assert
+        assertThat(result).isTrue()
+    }
+
+    @Test
+    fun should_execute_Rule3_with_value1() {
+
+        // act
+        val stones = Day11.Rule3().execute(1L)
+
+        // assert
+        assertThat(stones).containsExactly(2024L)
+    }
+
+    @Test
+    fun should_execute_Rule3_with_value2() {
+
+        // act
+        val stones = Day11.Rule3().execute(2L)
+
+        // assert
+        assertThat(stones).containsExactly(4048L)
+    }
+
 }

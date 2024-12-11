@@ -36,4 +36,13 @@ class Day11 {
             return listOf(firstHalf.toLong(), secondHalf.toLong())
         }
     }
+
+    class Rule3 : Rule {
+
+        override fun usable(stone: Long): Boolean = true
+
+        override fun execute(stone: Long): List<Long> {
+            return listOf(stone * 2024)
+        }
+    }
 }
