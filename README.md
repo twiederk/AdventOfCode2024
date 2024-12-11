@@ -12,7 +12,7 @@
 |  [6] | [Guard Gallivant]       | &#9733; | &#9733; | Moving through a maze             |
 |  [7] | [Bridge Repair]         | &#9733; | &#9733; | Permutations                      |
 |  [8] | [Resonant Collinearity] | &#9733; | &#9733; |                                   |
-|  [9] | [Disk Fragmenter]       |         |         |                                   |
+|  [9] | [Disk Fragmenter]       | &#9733; | &#9733; |                                   |
 | [10] | [Hoof It]               | &#9733; | &#9733; | BFS                               |
 
 ## Resources

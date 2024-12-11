@@ -60,7 +60,7 @@ class Day09 {
     }
 
     fun freeSpace(fileSystem: List<Int>, fileSize: Int, end: Int): Int {
-        for (index in 0..<end - fileSize) {
+        for (index in 0..end - fileSize) {
             if (fileSystem.subList(index, index + fileSize).all { it == FREE }) {
                 return index
             }
@@ -118,6 +118,4 @@ fun main() {
     val diskMap = day09.loadData(Path.of("src", "main", "resources", "Day09_InputData.txt"))
     println("part1: ${day09.solvePart1(diskMap)}")
     println("part2: ${day09.solvePart2(diskMap)}")
-    // part2: correct: 6_327_174_563_252
-    // part2: mine:    6_327_174_567_418
 }
