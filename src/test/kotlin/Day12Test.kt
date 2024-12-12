@@ -280,4 +280,47 @@ class Day12Test {
         )
     }
 
+    @Test
+    fun should_find_vertical_side_in_areaA() {
+        // arrange
+        val fences = Day12().fences(areaA)
+
+        // act
+        val sideVertical = Day12().sideVertical(Point2D(-1, 0), fences)
+
+        // assert
+        assertThat(sideVertical).containsOnly(
+            Point2D(-1, 0),
+        )
+    }
+
+
+    @Test
+    fun should_find_vertical_sides_of_area_A() {
+        // arrange
+        val day12 = Day12()
+        val fences = day12.fences(areaA).toMutableList()
+        val sidesHorizontal = day12.sidesHorizontal(fences)
+        fences.removeAll(sidesHorizontal.flatten())
+
+        // act
+        val sidesVertical = day12.sidesVertical(fences)
+
+        // assert
+        assertThat(sidesVertical).hasSize(2)
+    }
+
+    @Test
+    fun should_find_all_sides_of_AreaA() {
+        // arrange
+        val day12 = Day12()
+        val fences = day12.fences(areaA)
+
+        // act
+        val sides = day12.sides(fences)
+
+        // assert
+        assertThat(sides).isEqualTo(4)
+
+    }
 }

@@ -96,6 +96,30 @@ class Day12 {
         return side
     }
 
+    fun sidesVertical(fences: List<Point2D>): List<List<Point2D>> {
+        val sides = mutableListOf<List<Point2D>>()
+        var remaining = fences.toMutableList()
+        var fence = remaining[0]
+        while (fence in remaining) {
+            val side = sideVertical(fence, fences)
+            sides.add(side)
+            remaining.removeAll(side)
+            if (remaining.isEmpty()) {
+                break
+            }
+            fence = remaining[0]
+        }
+        return sides
+    }
+
+    fun sideVertical(point: Point2D, fences: List<Point2D>): List<Point2D> {
+        val side = mutableListOf<Point2D>()
+        side.addAll(followFence(point, fences, Point2D.NORTH))
+        side.addAll(followFence(point, fences, Point2D.SOUTH))
+        side.add(point)
+        return side
+    }
+
     private fun followFence(point: Point2D, fences: List<Point2D>, direction: Point2D): List<Point2D> {
         val side = mutableListOf<Point2D>()
         var current = point
@@ -104,6 +128,14 @@ class Day12 {
             current += direction
         }
         return side
+    }
+
+    fun sides(fences: List<Point2D>): Int {
+        val remainingFences = fences.toMutableList()
+        val sidesHorizontal = sidesHorizontal(remainingFences)
+        remainingFences.removeAll(sidesHorizontal.flatten())
+        val sidesVertical = sidesVertical(remainingFences)
+        return sidesHorizontal.size + sidesVertical.size
     }
 
 }
