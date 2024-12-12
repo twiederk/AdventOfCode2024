@@ -26,6 +26,13 @@ class Day12Test {
         Point2D(3, 0),
     )
 
+    private val areaB = listOf(
+        Point2D(0, 1),
+        Point2D(1, 1),
+        Point2D(0, 2),
+        Point2D(1, 2),
+    )
+
 
     @Test
     fun should_load_data() {
@@ -296,10 +303,10 @@ class Day12Test {
 
 
     @Test
-    fun should_find_vertical_sides_of_area_A() {
+    fun should_find_vertical_sides_of_areaB() {
         // arrange
         val day12 = Day12()
-        val fences = day12.fences(areaA).toMutableList()
+        val fences = day12.fences(areaB).toMutableList()
         val sidesHorizontal = day12.sidesHorizontal(fences)
         fences.removeAll(sidesHorizontal.flatten())
 
@@ -321,6 +328,19 @@ class Day12Test {
 
         // assert
         assertThat(sides).isEqualTo(4)
-
     }
+
+    @Test
+    fun should_remove_only_one_element() {
+        // arrange
+        val list = mutableListOf(Point2D(0, 0), Point2D(1, 0), Point2D(0, 0), Point2D(1, 0))
+        val elementsToRemove = listOf(Point2D(0, 0), Point2D(1, 0))
+
+        // act
+        Day12().remove(list, elementsToRemove)
+
+        // assert
+        assertThat(list).containsExactly(Point2D(0, 0), Point2D(1, 0))
+    }
+
 }

@@ -79,7 +79,7 @@ class Day12 {
             if (side.size > 1) {
                 sides.add(side)
             }
-            remaining.removeAll(side)
+            remove(remaining, side)
             if (remaining.isEmpty()) {
                 break
             }
@@ -102,8 +102,10 @@ class Day12 {
         var fence = remaining[0]
         while (fence in remaining) {
             val side = sideVertical(fence, fences)
-            sides.add(side)
-            remaining.removeAll(side)
+            if (side.size > 1) {
+                sides.add(side)
+            }
+            remove(remaining, side)
             if (remaining.isEmpty()) {
                 break
             }
@@ -133,9 +135,17 @@ class Day12 {
     fun sides(fences: List<Point2D>): Int {
         val remainingFences = fences.toMutableList()
         val sidesHorizontal = sidesHorizontal(remainingFences)
-        remainingFences.removeAll(sidesHorizontal.flatten())
+        remove(remainingFences, sidesHorizontal.flatten())
         val sidesVertical = sidesVertical(remainingFences)
-        return sidesHorizontal.size + sidesVertical.size
+        remove(remainingFences, sidesVertical.flatten())
+        return sidesHorizontal.size + sidesVertical.size + remainingFences.size
+    }
+
+    fun remove(list: MutableList<Point2D>, elementsToRemove: List<Point2D>) {
+        for (element in elementsToRemove) {
+            val index = list.indexOf(element)
+            list.removeAt(index)
+        }
     }
 
 }
