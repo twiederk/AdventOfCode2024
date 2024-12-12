@@ -72,9 +72,18 @@ class Day12 {
 
     fun sidesHorizontal(fences: List<Point2D>): List<List<Point2D>> {
         val sides = mutableListOf<List<Point2D>>()
-        for (fence in fences) {
+        var remaining = fences.toMutableList()
+        var fence = remaining[0]
+        while (fence in remaining) {
             val side = sideHorizontal(fence, fences)
-            sides.add(side)
+            if (side.size > 1) {
+                sides.add(side)
+            }
+            remaining.removeAll(side)
+            if (remaining.isEmpty()) {
+                break
+            }
+            fence = remaining[0]
         }
         return sides
     }
@@ -83,9 +92,7 @@ class Day12 {
         val side = mutableListOf<Point2D>()
         side.addAll(followFence(point, fences, Point2D.EAST))
         side.addAll(followFence(point, fences, Point2D.WEST))
-        if (side.isNotEmpty()) {
-            side.add(point)
-        }
+        side.add(point)
         return side
     }
 
