@@ -19,6 +19,23 @@ class Day12Test {
         "OOOOO",
     )
 
+    private val garden3 = listOf(
+        "EEEEE",
+        "EXXXX",
+        "EEEEE",
+        "EXXXX",
+        "EEEEE",
+    )
+
+    private val garden4 = listOf(
+        "AAAAAA",
+        "AAABBA",
+        "AAABBA",
+        "ABBAAA",
+        "ABBAAA",
+        "AAAAAA",
+    )
+
     private val areaA = listOf(
         Point2D(0, 0),
         Point2D(1, 0),
@@ -108,7 +125,6 @@ class Day12Test {
 
         // assert
         assertThat(areas).hasSize(5)
-        println(areas)
     }
 
     @Test
@@ -361,6 +377,16 @@ class Day12Test {
 
         // assert
         assertThat(price).isEqualTo(436)
+    }
+
+    @Test
+    fun should_solve_part2_with_garden3() {
+
+        // act
+        val price = Day12().solvePart2(garden3)
+
+        // assert
+        assertThat(price).isEqualTo(236)
     }
 
     @Test
