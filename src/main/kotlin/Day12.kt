@@ -52,4 +52,57 @@ class Day12 {
         return areas
     }
 
+    fun fences(area: List<Point2D>): List<Point2D> {
+        val fences = mutableListOf<Point2D>()
+        for (plot in area) {
+            val neighbors = plot.cardinalNeighbors()
+            for (neighbor in neighbors) {
+                if (!area.contains(neighbor)) {
+                    fences.add(neighbor)
+                }
+            }
+        }
+        return fences
+    }
+
+    fun solvePart1(garden: List<String>): Int {
+        val areas = areas(garden)
+        return areas.sumOf { it.size * fences(it).size }
+    }
+
+    fun sidesHorizontal(fences: List<Point2D>): List<List<Point2D>> {
+        val sides = mutableListOf<List<Point2D>>()
+        for (fence in fences) {
+            val side = sideHorizontal(fence, fences)
+            sides.add(side)
+        }
+        return sides
+    }
+
+    fun sideHorizontal(point: Point2D, fences: List<Point2D>): List<Point2D> {
+        val side = mutableListOf<Point2D>()
+        side.addAll(followFence(point, fences, Point2D.EAST))
+        side.addAll(followFence(point, fences, Point2D.WEST))
+        if (side.isNotEmpty()) {
+            side.add(point)
+        }
+        return side
+    }
+
+    private fun followFence(point: Point2D, fences: List<Point2D>, direction: Point2D): List<Point2D> {
+        val side = mutableListOf<Point2D>()
+        var current = point
+        while (current + direction in fences) {
+            side.add(current + direction)
+            current += direction
+        }
+        return side
+    }
+
+}
+
+fun main() {
+    val day12 = Day12()
+    val data = day12.loadData(Path.of("src", "main", "resources", "Day12_InputData.txt"))
+    println("part1: ${day12.solvePart1(data)}")
 }
