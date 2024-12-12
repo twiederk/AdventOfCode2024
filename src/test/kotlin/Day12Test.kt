@@ -272,7 +272,12 @@ class Day12Test {
         val sideHorizontal = Day12().sideHorizontal(Point2D(0, -1), fences)
 
         // assert
-        assertThat(sideHorizontal).hasSize(4)
+        assertThat(sideHorizontal).containsOnly(
+            Point2D(0, -1),
+            Point2D(1, -1),
+            Point2D(2, -1),
+            Point2D(3, -1),
+        )
     }
 
 }
