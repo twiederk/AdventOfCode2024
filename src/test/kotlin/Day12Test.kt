@@ -343,4 +343,35 @@ class Day12Test {
         assertThat(list).containsExactly(Point2D(0, 0), Point2D(1, 0))
     }
 
+    @Test
+    fun should_solve_part2_with_garden1() {
+
+        // act
+        val price = Day12().solvePart2(garden1)
+
+        // assert
+        assertThat(price).isEqualTo(80)
+    }
+
+    @Test
+    fun should_solve_part2_with_garden2() {
+
+        // act
+        val price = Day12().solvePart2(garden2)
+
+        // assert
+        assertThat(price).isEqualTo(436)
+    }
+
+    @Test
+    fun should_solve_part2_with_example_garden() {
+        // arrange
+        val garden = Day12().loadData(Path.of("src", "test", "resources", "Day12_TestData.txt"))
+
+        // act
+        val price = Day12().solvePart2(garden)
+
+        // assert
+        assertThat(price).isEqualTo(1206)
+    }
 }

@@ -144,8 +144,16 @@ class Day12 {
     fun remove(list: MutableList<Point2D>, elementsToRemove: List<Point2D>) {
         for (element in elementsToRemove) {
             val index = list.indexOf(element)
+            if (index == -1) {
+                continue
+            }
             list.removeAt(index)
         }
+    }
+
+    fun solvePart2(garden: List<String>): Int {
+        val areas = areas(garden)
+        return areas.sumOf { it.size * sides(fences(it)) }
     }
 
 }
@@ -154,4 +162,5 @@ fun main() {
     val day12 = Day12()
     val data = day12.loadData(Path.of("src", "main", "resources", "Day12_InputData.txt"))
     println("part1: ${day12.solvePart1(data)}")
+    println("part2: ${day12.solvePart2(data)}")
 }
