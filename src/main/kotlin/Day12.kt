@@ -37,4 +37,19 @@ class Day12 {
                 && plant == plant(garden, plot)
     }
 
+    fun areas(garden: List<String>): List<List<Point2D>> {
+        val areas = mutableListOf<List<Point2D>>()
+        for (y in garden.indices) {
+            for (x in garden[y].indices) {
+                val plot = Point2D(x, y)
+                if (areas.any { it.contains(plot) }) {
+                    continue
+                }
+                val area = area(garden, plot)
+                areas.add(area)
+            }
+        }
+        return areas
+    }
+
 }

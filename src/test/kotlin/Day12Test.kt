@@ -11,6 +11,14 @@ class Day12Test {
         "EEEC",
     )
 
+    private val garden2 = listOf(
+        "OOOOO",
+        "OXOXO",
+        "OOOOO",
+        "OXOXO",
+        "OOOOO",
+    )
+
     @Test
     fun should_load_data() {
 
@@ -42,6 +50,52 @@ class Day12Test {
             Point2D(2, 0),
             Point2D(3, 0),
         )
-
     }
+
+    @Test
+    fun should_find_all_areas_of_garden1() {
+
+        // act
+        val areas = Day12().areas(garden1)
+
+        // assert
+        assertThat(areas).hasSize(5)
+        assertThat(areas[0]).containsOnly(
+            Point2D(0, 0),
+            Point2D(1, 0),
+            Point2D(2, 0),
+            Point2D(3, 0),
+        )
+        assertThat(areas[1]).containsOnly(
+            Point2D(0, 1),
+            Point2D(1, 1),
+            Point2D(0, 2),
+            Point2D(1, 2),
+        )
+        assertThat(areas[2]).containsOnly(
+            Point2D(2, 1),
+            Point2D(3, 3),
+            Point2D(2, 2),
+            Point2D(3, 2),
+        )
+        assertThat(areas[3]).containsOnly(
+            Point2D(3, 1),
+        )
+        assertThat(areas[4]).containsOnly(
+            Point2D(0, 3),
+            Point2D(1, 3),
+            Point2D(2, 3),
+        )
+    }
+
+    @Test
+    fun should_find_all_areas_of_garden2() {
+
+        // act
+        val areas = Day12().areas(garden2)
+
+        // assert
+        assertThat(areas).hasSize(5)
+    }
+
 }
